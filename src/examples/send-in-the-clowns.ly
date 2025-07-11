@@ -1,22 +1,41 @@
-\version "2.24.4"
+\version "2.24.2"
 
 \header {
   title = "Send in the Clowns (Tin Whistle in D)"
   composer = "Stephen Sondheim"
 }
 
-melody = \relative d' {
-  \key c \major
-  \time 4/4
+melody =   {
+  \key g \major
+  \time 12/8
   \tempo "Lento"
   
-  % Levare
-  r4 d4 e a |
-  % Introduzione (prima frase)
-  a1 |
-  r4 d4 e a |
-  a1 |
-   
+ 
+  
+
+  % ---------------------------------
+  r2. r4. d'8 e' a' |
+  a'4. r4. r4. d'8 e'8 a'8            |
+  a'4. r4. r4. b'8 cis''8 a'8           |
+  \time 9/8
+  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   | 
+  \time 12/8
+  fis'4. r4. r4. fis'8 a'8 d'8        |
+  e'2. r2.                            |
+
+  % ---------------------------------
+  r2. r4. d'8 e' a' |
+  a'4. r4. r4. d'8 e'8 a'8            |
+  a'4. r4. r4. b'8 cis''8 a'8           |
+  \time 9/8
+  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   | 
+  \time 12/8
+  fis'4. r4. r4. fis'8 a'8 d'8        |
+  e'2. r4.       fis'8 a'8 gis'8      |
+  a'2. r2.                            |
+
+
+
 }
 
 \score {
