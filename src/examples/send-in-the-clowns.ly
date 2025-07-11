@@ -11,11 +11,11 @@ melody = \relative d' {
   \tempo "Lento"
   
   % Levare
-  d4 e a |
+  r4 d4 e a |
   % Introduzione (prima frase)
-  a |
-  d4 e a |
-  a |
+  a1 |
+  r4 d4 e a |
+  a1 |
    
 }
 

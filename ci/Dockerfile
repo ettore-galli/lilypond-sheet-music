@@ -1,9 +1,15 @@
-FROM ubuntu
+FROM --platform=linux/amd64 ubuntu
 
 # ---------- BASE ----------
 
+ENV VERSION=2.24.2
 RUN apt-get update && \  
-    apt-get install -y lilypond  
+    apt-get install -y sudo wget 
+RUN wget "https://gitlab.com/lilypond/lilypond/-/releases/v${VERSION}/downloads/lilypond-${VERSION}-linux-x86_64.tar.gz" && \
+    tar -xzf lilypond-${VERSION}-linux-x86_64.tar.gz && \
+    mv lilypond-${VERSION} /opt/lilypond && \
+    ln -s /opt/lilypond/bin/lilypond /usr/local/bin/lilypond && \
+    rm lilypond-${VERSION}-linux-x86_64.tar.gz
 
 ENV HOME=/var/lilypond
 
@@ -16,6 +22,7 @@ RUN useradd -m \
     -u 501 \
     lily
 
+RUN echo "root:password" | chpasswd
 RUN echo "lily:password" | chpasswd
 
 USER lily:sudo
