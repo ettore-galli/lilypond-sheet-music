@@ -9,16 +9,14 @@ melody =   {
   \key d \major
   \time 12/8
   \tempo "Lento"
-  
- 
-  
+
 
   % ---------------------------------
   r2. r4. d'8 e' a' |
   a'4. r4. r4. d'8 e'8 a'8            |
   a'4. r4. r4. b'8 cis''8 a'8           |
   \time 9/8
-  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   | 
+  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   |
   \time 12/8
   fis'4. r4. r4. fis'8 a'8 d'8        |
   e'2. r2.                            |
@@ -28,7 +26,7 @@ melody =   {
   a'4. r4. r4. d'8 e'8 a'8            |
   a'4. r4. r4. b'8 cis''8 a'8           |
   \time 9/8
-  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   | 
+  b'8 cis''8 cis''8 cis''4. cis''8 e''8 e'8   |
   \time 12/8
   fis'4. r4. r4. fis'8 a'8 d'8        |
   e'2. r4.       fis'8 a'8 gis'8      |
@@ -39,7 +37,7 @@ melody =   {
   cis''2. r4. g'8  cis''8 b'8       |
   cis''2. r4. g'8  dis''8   b'8       |
   cis''2. r4. g'8  dis''8   b'8       |
-   \time 9/8
+  \time 9/8
   cis''8 dis''8 dis''8 dis''8 e''8 e''8 e''8 dis''8 b'8 |
   \time 12/8
   cis''2. r4. g'8  cis''8   g'8       |
