@@ -1,11 +1,12 @@
 \version "2.24.2"
 
 \header {
-  title = "Send in the Clowns (Tin Whistle in D)"
+  title = "Send in the Clowns"
   composer = "Stephen Sondheim"
 }
 
 melody =   {
+  \set Staff.instrumentName = "T.W."
   \key a \major
   \time 12/8
   \tempo "Lento"
