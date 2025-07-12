@@ -6,12 +6,15 @@
 }
 
 melody =   {
-  \key d \major
+  \key a \major
   \time 12/8
   \tempo "Lento"
 
+  \set Score.barNumberVisibility = #all-bar-numbers-visible
+
+  \partial 4.
   % ----------------------------------------------------------------
-  r2.      r4.      d'8      e'       a'       |
+  d'8      e'       a'       |
   a'4.     r4.      r4.      d'8      e'8      a'8      |
   a'4.     r4.      r4.      b'8      cis''8   a'8      |
   \time 9/8
