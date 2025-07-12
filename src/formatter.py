@@ -17,14 +17,10 @@ def is_list_of_notes(line: str) -> bool:
     return bool(re.search(note_pattern, line))
 
 
-
-def process_notes_line(line: str, intra_note_space: int = 2) -> str:
+def process_notes_line(line: str, max_width: int, intra_note_space: int = 2) -> str:
     number_of_leading_spaces = len(line) - len(line.lstrip())
 
     notes = [token.strip() for token in line.strip().split(" ")]
-    max_width = (
-        max(*[len(token) for token in notes]) if len(notes) > 1 else len(notes[0])
-    )
 
     return (
         " " * number_of_leading_spaces
@@ -37,12 +33,36 @@ def process_notes_line(line: str, intra_note_space: int = 2) -> str:
     )
 
 
+def open_file(filename: str):
+    return open(filename, "r", encoding="utf-8")
+
+
+def get_note_line_width(line: str) -> int:
+
+    notes = [token.strip() for token in line.strip().split(" ")]
+    return max(*[len(token) for token in notes]) if len(notes) > 1 else len(notes[0])
+
+
+def maximum_token_width(file_content: List[str]) -> int:
+    return max(
+        *[get_note_line_width(line) for line in file_content if is_list_of_notes(line)]
+    )
+
+
 def process_file(filename: str) -> List[str]:
-    with open(filename, "r", encoding="utf-8") as input_file:
+    with open_file(filename) as input_file:
+        file_content = [line for line in input_file]
+        max_width = maximum_token_width(file_content=file_content)
         return reduce(
             lambda content, line: content
-            + [process_notes_line(line=line) if is_list_of_notes(line) else line],
-            input_file,
+            + [
+                (
+                    process_notes_line(line=line, max_width=max_width)
+                    if is_list_of_notes(line)
+                    else line
+                )
+            ],
+            file_content,
             [],
         )
 
