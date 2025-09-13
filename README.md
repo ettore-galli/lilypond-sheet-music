@@ -8,6 +8,14 @@ docker build -t lilypond-runtime -f ci/Dockerfile .
 
 ## Basic usage
 
+Enter the environment
+
 ```sh
-./lily.sh [subpath/of/src]/filename.ly
+./lilyenv.sh 
+```
+
+Compile the source file
+
+```sh
+lilypond -o /created /music/source/my-source-file.ly 
 ```
