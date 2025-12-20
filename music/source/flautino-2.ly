@@ -37,9 +37,9 @@ common = {
   \header { piece = "Esercizio 2 — Intervalli di terza" }
   \new Staff {
     \common
-    f' a' g' b' |
-    a' c'' b' d'' |
-    c'' a' g' b' |
+    f' a' g' b'^"♭/♮" |
+    a' c'' b'^"♭/♮" d'' |
+    c'' a' g' b'^"♭/♮" |
     a' g' f'2
   }
   \layout { }
@@ -72,7 +72,7 @@ common = {
   \new Staff {
     \common
     f' a' c'' a' |
-    g' b' d'' b' |
+    g' b'^"♭/♮" d'' b'^"♭/♮" |
     a' c'' f'' c'' |
     a'2 f'
   }
@@ -89,8 +89,8 @@ common = {
   \new Staff {
     \common
     f'4 g' a' c'' | a' g' f'2 |
-    g'4 a' c'' b' | a' g' f'2 |
-    f'4 a' c'' a' | g' b' d'' b' |
+    g'4 a' c'' b'^"♭/♮" | a' g' f'2 |
+    f'4 a' c'' a' | g' b'^"♭/♮" d'' b'^"♭/♮" |
     c''4 a' g' f' | f'1
   }
   \layout { }
@@ -110,7 +110,7 @@ common = {
   \new Staff {
     \common
     f' g' a' c'' |
-    b' c'' d'' f'' |
+    b'^"♭/♮" c'' d'' f'' |
     e'' d'' c'' a' |
     g' a' f'2
   }
@@ -127,9 +127,9 @@ common = {
   \new Staff {
     \common
     f' a' c'' a' |
-    g' b' d'' b' |
+    g' b'^"♭/♮" d'' b'^"♭/♮" |
     a' c'' e'' c'' |
-    g' b' g'' b' |
+    g' b'^"♭/♮" g'' b'^"♭/♮" |
     a' g' f'2
   }
   \layout { }
@@ -164,7 +164,7 @@ common = {
     c''4 d'' e'' f'' |
     g''2 f''4 e'' |
     d'' c'' a' c'' |
-    b' a' g' f' |
+    b'^"♭/♮" a' g' f' |
     f'1
   }
   \layout { }
@@ -179,9 +179,9 @@ common = {
   \header { piece = "Esercizio 10 — Melodia articolata" }
   \new Staff {
     \common
-    f'4 a' c'' a' | g' b' d'' b' |
+    f'4 a' c'' a' | g' b'^"♭/♮" d'' b'^"♭/♮" |
     c''4 d'' e'' c'' | a' g' f'2 |
-    g'4 a' c'' b' | a' c'' f'' e'' |
+    g'4 a' c'' b'^"♭/♮" | a' c'' f'' e'' |
     d''4 c'' a' g' | f'1
   }
   \layout { }
@@ -200,8 +200,8 @@ common = {
     \common
     f' a' c'' f'' |
     e'' c'' a' c'' |
-    g' b' d'' g'' |
-    f'' d'' b' g' |
+    g' b'^"♭/♮" d'' g'' |
+    f'' d'' b'^"♭/♮" g' |
     a' c'' f'' c'' |
     a' g' f'2
   }
@@ -218,9 +218,9 @@ common = {
   \new Staff {
     \common
     f'4 fis' g' gis' |
-    a'4 gis' a' b' |
+    a'4 gis' a' b'^"♭/♮" |
     c''4 cis'' d'' dis'' |
-    e''4 d'' c'' b' |
+    e''4 d'' c'' b'^"♭/♮" |
     a' g' fis' g' |
     f'1
   }
@@ -236,4 +236,6 @@ common = {
   \header { piece = "Esercizio 13 — Registro acuto avanzato" }
   \new Staff {
     \common
-    c''8 d'' e'' f'' g'' f
+    c''8 d'' e'' f'' g'' f'
+  }
+}
