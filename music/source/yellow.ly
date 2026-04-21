@@ -26,7 +26,9 @@ melody =   {
 
   \repeat volta 2 {
     \mark \markup {"Ritornello"}
-    <gis-1 e'-2>1   |    <gis-1 e'-2>1     |   <b-2 gis'-3>1     |   <ais-2 fis'-3>1   |
+    <gis-1 e'-2>1 |
+    <b-2 gis'-3>2 |
+    <ais-2 fis'-3>2 |
   }
 
   \break
@@ -38,6 +40,6 @@ melody =   {
     \clef treble
     \melody
   }
-  \layout { }
+  \layout {}
   \midi { tempoWholesPerMinute = #70 }
 }
