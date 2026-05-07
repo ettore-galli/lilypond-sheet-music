@@ -16,10 +16,28 @@ melody =   {
   \time 4/4
 
   \set Score.barNumberVisibility = #all-bar-numbers-visible
-
+  
   \repeat volta 2 {
     \mark \markup {"Strofa"}
-    <c'-3 e'-1>1   |   <b-2 g'-3>1    |   <a-1 f'-2>1     |    <c'-3 e'-1>1    |
+    
+    <<
+    \new Voice = "melody" {
+     \voiceOne
+      <c'-3 e'-1>1   |   <b-2 g'-3>1    |   <a-1 f'-2>1     |    <c'-3 e'-1>1    |
+    }
+
+    \new Voice = "slashes" \with {
+      \override NoteHead.style = #'slash
+      \override Stem.transparent = ##t
+      \override Beam.transparent = ##t
+    } {
+      \voiceTwo
+      \repeat unfold 4 { c''4 } |
+      \repeat unfold 4 { c''4 } |
+      \repeat unfold 4 { c''4 } |
+      \repeat unfold 4 { c''4 } |
+    }
+    >>
   }
 
   \break
@@ -40,6 +58,11 @@ melody =   {
     \clef treble
     \melody
   }
-  \layout {}
+  \layout {
+    \context {
+      \Staff
+      \consists "Slash_repeat_engraver"
+    }
+  }
   \midi { tempoWholesPerMinute = #70 }
 }
