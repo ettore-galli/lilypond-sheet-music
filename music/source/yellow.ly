@@ -12,23 +12,23 @@
 
 melody =   {
   \set Staff.instrumentName = "Vl."
-  \key b \major
+  \key c \major
   \time 4/4
 
   \set Score.barNumberVisibility = #all-bar-numbers-visible
 
   \repeat volta 2 {
     \mark \markup {"Strofa"}
-    <b-3 dis'-1>1   |   <ais-2 fis'-3>1    |   <gis-1 e'-2>1     |   <b-3 dis'-1>1   |
+    <c'-3 e'-1>1   |   <b-2 g'-3>1    |   <a-1 f'-2>1     |    <c'-3 e'-1>1    |
   }
 
   \break
 
   \repeat volta 2 {
     \mark \markup {"Ritornello"}
-    <b-3 dis'-1>1 |
-    <b-2 gis'-3>2^\markup { \tiny "(opp. 3–4)" }  
-    <ais-2 fis'-3>2 |
+    f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
+    f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
+ 
   }
 
   \break
