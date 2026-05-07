@@ -16,10 +16,11 @@ melody =   {
   \time 4/4
 
   \set Score.barNumberVisibility = #all-bar-numbers-visible
-  
+
   \repeat volta 2 {
-    \mark \markup {"Strofa"}
     
+    \mark \markup {"Strofa"}
+
     <<
     \new Voice = "melody" {
      \voiceOne
@@ -42,13 +43,17 @@ melody =   {
 
   \break
 
-  \repeat volta 2 {
+
+  \repeat volta 3 {
     \mark \markup {"Ritornello"}
+    
     f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
     f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
  
   }
-
+  \repeat volta 1 {
+    f'1 |
+  }
   \break
 
 }
@@ -59,10 +64,6 @@ melody =   {
     \melody
   }
   \layout {
-    \context {
-      \Staff
-      \consists "Slash_repeat_engraver"
-    }
   }
   \midi { tempoWholesPerMinute = #70 }
 }
