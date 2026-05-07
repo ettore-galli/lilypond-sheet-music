@@ -26,8 +26,8 @@ melody =   {
 
   \repeat volta 2 {
     \mark \markup {"Ritornello"}
-    <gis-1 e'-2>1 |
-    <b-2 gis'-3>2 |
+    <b-3 dis'-1>1 |
+    <b-2 gis'-3>2^\markup { \tiny "(opp. 3–4)" }  
     <ais-2 fis'-3>2 |
   }
 
