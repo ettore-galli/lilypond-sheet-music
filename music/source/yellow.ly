@@ -29,14 +29,14 @@ melody =   {
 
     \new Voice = "slashes" \with {
       \override NoteHead.style = #'slash
-      \override Stem.transparent = ##t
-      \override Beam.transparent = ##t
+      % \override Stem.transparent = ##t
+      % \override Beam.transparent = ##t
     } {
       \voiceTwo
-      \repeat unfold 4 { c''4 } |
-      \repeat unfold 4 { c''4 } |
-      \repeat unfold 4 { c''4 } |
-      \repeat unfold 4 { c''4 } |
+      \stemUp e''8 [ e''8 e''8 ] e''8 [ e''8 e''8 ] e''8 [ e''8 ]
+      \stemUp e''8 [ e''8 e''8 ] e''8 [ e''8 e''8 ] e''8 [ e''8 ]
+      \stemUp e''8 [ e''8 e''8 ] e''8 [ e''8 e''8 ] e''8 [ e''8 ]
+      \stemUp e''8 [ e''8 e''8 ] e''8 [ e''8 e''8 ] e''8 [ e''8 ]
     }
     >>
   }
