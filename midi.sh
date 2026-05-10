@@ -2,5 +2,5 @@
 
 export PYTHONPATH=$(pwd)/src 
 
-(. venv/bin/activate && python src/midiplayer.py ${1})
+(. venv/bin/activate && python src/midiplayer.py ${1} ${2})
   

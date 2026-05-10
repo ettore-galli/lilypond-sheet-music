@@ -3,39 +3,43 @@ import sys
 import time
 
 
-def play_midi(file_path):
+def play_midi_by_beat(file_path, start_beat=0.0):
     try:
-        # Inizializza il mixer di pygame per la musica
         pygame.mixer.init()
-
-        # Carica il file MIDI
         pygame.mixer.music.load(file_path)
 
-        print(f"Riproduzione in corso: {file_path}")
-        print("Premi CTRL+C per fermare la riproduzione.")
+        print(f"File: {file_path}")
+        print(f"Salto al beat: {start_beat}")
 
-        # Inizia la riproduzione
+        # Facciamo partire la riproduzione
         pygame.mixer.music.play()
 
-        # Ciclo di attesa finché la musica è in esecuzione
+        # Sui MIDI, set_pos sposta il cursore ai "beat" (quarti)
+        # Questo comando è solitamente più supportato di play(start=...)
+        try:
+            pygame.mixer.music.set_pos(start_beat)
+        except pygame.error:
+            print(
+                "Avviso: Il salto per beat non è supportato su questa configurazione."
+            )
+
+        print("In riproduzione... Premi CTRL+C per fermare.")
+
         while pygame.mixer.music.get_busy():
             time.sleep(1)
 
-    except pygame.error as e:
-        print(f"Errore durante la riproduzione: {e}")
     except KeyboardInterrupt:
-        # Intercetta il CTRL+C
-        print("\nRiproduzione interrotta dall'utente. Arrivederci!")
+        print("\nStop richiesto dall'utente.")
         pygame.mixer.music.stop()
     finally:
-        # Chiude correttamente il mixer
         pygame.mixer.quit()
 
 
 if __name__ == "__main__":
-    # Verifica se è stato passato un file come argomento
     if len(sys.argv) < 2:
-        print("Utilizzo: python player.py <percorso_file_midi>")
+        print("Utilizzo: python player.py <file_midi> [beat_di_inizio]")
+        print("Esempio: python player.py song.mid 16 (parte dalla battuta 5 in 4/4)")
     else:
         percorso = sys.argv[1]
-        play_midi(percorso)
+        beat_inizio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.0
+        play_midi_by_beat(percorso, beat_inizio)
