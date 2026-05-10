@@ -6,13 +6,14 @@
 }
 
 gchords = \chordmode {
-  bes1:7sus4 | s1  | d1:m | c1
+   
 }
 
 melody = {
   \set Staff.instrumentName = "Vl."
   \key b \major
   \time 4/4
+  \tempo 4 = 96
   \mark \markup {"Strofa 1"}
   \repeat volta 2 {
     e'4-2   e'4   e'4  e'8  fis'8-3( | fis'8) fis'4  fis'8  fis'4  fis'4
@@ -40,7 +41,21 @@ melody = {
     b'4-2 cis''8-3 b'8( b'4-2) cis''8-3 b'8( | b'2-2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
   }
 
+  \break
 
+  \mark \markup {"Ritornello"}
+  \repeat volta 2 {
+    e'4-2   e'4   e'4  e'8  fis'8-3( | fis'8) fis'4  fis'8  fis'4  fis'4
+    b'4-2   b'4   b'4  b'8  gis'8-4( | gis'8) gis'4  gis'8  gis'4  gis'4
+  }
+
+  \break
+
+  \mark \markup {"Intermezzo"}
+  \repeat volta 2 {
+    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
+    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
+  }
 }
 
 \score {
