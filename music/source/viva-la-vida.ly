@@ -16,8 +16,8 @@ melody = {
   \tempo 4 = 96
   \mark \markup {"Strofa 1"}
   \repeat volta 2 {
-    e'4-2   e'4   e'4  e'8  fis'8-3( | fis'8) fis'4  fis'8  fis'4  fis'4
-    fis'4   fis'4   fis'4  fis'8  gis'8-4( | gis'8) gis'4  gis'8  gis'4  gis'4
+    e'4-.-2   e'4-.   e'4-.  e'8  fis'8-3( | fis'8) fis'4-.  fis'8  fis'4-.  fis'4-.
+    fis'4-.   fis'4-.   fis'4-.  fis'8  gis'8-4( | gis'8) gis'4-.  gis'8  gis'4-.  gis'4-.
   }
 
   \break
