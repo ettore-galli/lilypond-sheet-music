@@ -5,8 +5,13 @@
   composer = "Coldplay"
 }
 
+\paper {
+  line-width = 170\mm
+  indent = 0\mm
+}
+
 gchords = \chordmode {
-   
+
 }
 
 melody = {
@@ -14,25 +19,29 @@ melody = {
   \key b \major
   \time 4/4
   \tempo 4 = 96
-  \mark \markup {"Strofa 1"}
+  \mark \markup {"Intro | Strofa 1 | Intermezzo 1"}
   \repeat volta 2 {
     e'4-.-2   e'4-.   e'4-.  e'8  fis'8-3( | fis'8) fis'4-.  fis'8  fis'4-.  fis'4-.
     fis'4-.   fis'4-.   fis'4-.  fis'8  gis'8-4( | gis'8) gis'4-.  gis'8  gis'4-.  gis'4-.
   }
 
   \break
-  \mark \markup {"Strofa 2"}
-  \repeat volta 2 {
+  \mark \markup {"Pre strofa 2"}
+  % \repeat volta 2 {
 
-    b'2.-2(  b'8) ais'8-1( | ais'1) | b'2.-2(  b'8) ais'8-1( | ais'1)
+    b'2.-2(  b'8) ais'8-1( | ais'1) | 
+    b'2.-2(  b'8) ais'8-1( | ais'1) |
+    b'2.-2(  b'8) ais'8-1( | ais'1) |
     b'2.-2(  b'8) ais'8-1( | ais'2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
-  }
+  % }
+
   \repeat volta 2 {
+    \mark \markup {"Strofa 2"}
     \break
     gis'1-4 | fis'2-3 b'8-2 ais'8-1 fis'8-3 dis'8-1| fis'2.-3( fis'8) dis'8-1( | dis'2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
 
     \break
-    gis'1-4 | fis'2-3 b'8-2 ais'8-1 fis'8-3 dis'8-1| fis'2.-3( fis'8 )dis'8-1( | dis'1)  |
+    gis'1-4 | fis'2-3 b'8-2 ais'8-1 fis'8-3 dis'8-1| fis'2.-3( fis'8 )gis'8-4( | gis'1)  |
 
     \break
     b'4-2 cis''8-3 b'8( b'4-2) cis''8-3 b'8( | b'4-2) cis''8-3 b'8( b'2)
@@ -55,6 +64,10 @@ melody = {
   \repeat volta 2 {
     e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
     e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
+    \break
+    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
+    fis'1-3 |  
+    fis'1-3 |  
   }
 }
 
