@@ -1,8 +1,7 @@
 \version "2.24.2"
 
 \header {
-  title = "Zombie"
-  composer = "Cranberries"
+  title = "Scale"
 }
 
 \paper {
@@ -12,7 +11,7 @@
 
 melody =   {
   \set Staff.instrumentName = "Vl."
-  \key e \minor
+  \key b \minor
   \time 4/4
   
 
@@ -21,15 +20,24 @@ melody =   {
  
   \repeat volta 3 {
     \mark \markup {"A"} 
-    e'1   |   c'1    |    b1    |    a1     |
+b-1   cis'-2   d'-3   e'-4
+fis'-1   g'-2   a'-4   b'-1
+cis''-2  d''-3  e''-1  fis''-2
+g''-3   a''-4   b''-1
+
+
+      \break 
+
+b''-1   a''-4   g''-3   fis''-2
+e''-1   d''-3   cis''-2   b'-1
+a'-4   g'-2   fis'-1   e'-4
+d'-3   cis'-2   b-1
+
   } 
   
   \break
 
-  \repeat volta 2 {
-    \mark \markup {"B"} 
-    e'1   |   c'1    |    g'1    |    fis'1     |
-  }  
+ 
 
   % \break
 
