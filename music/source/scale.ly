@@ -90,6 +90,43 @@ melody =   {
 
     % Barra di fine doppia
     \bar "|."
+
+    \break
+
+        %% --- SCALA ASCENDENTE ---
+    % Corda SOL (IV) - In prima posizione
+    b4\4-2 cis'4-3 dis'4-4 e'4\3-1 |
+    
+    % Corda RE (III) - Slittamento in Terza Posizione sul Fa#
+    fis'4-\finger "1 - III pos." gis'4-2 ais'4-3 b'4\2-1 |
+    
+    % Corda LA (II) - Interamente in Terza Posizione
+    cis''4-2 dis''4-3 e''4-4 fis''4\1-1 |
+    
+    % Corda MI (I) - Interamente in Terza Posizione
+    gis''4-2 ais''4-3 b''4-4
+    
+    % Interruzione per andare a capo
+    \break
+
+    %% --- SCALA DISCENDENTE ---
+    % Corda MI (I) - Interamente in Terza Posizione
+    b''4\1-2 | ais''4-1 gis''4\2-4 fis''4-3 e''4-2 |
+    
+    % Corda LA (II) - Rimaniamo in Terza Posizione
+    dis''4-1 cis''4\3-4 b'4-3 ais'4-2 |
+    
+    % Corda RE (III) - Il Gis' è l'ultima nota in Terza Posizione (1° dito)
+    % Poi si scivola indietro e si prende il Fa#' in Prima Posizione con il 2° dito
+    gis'4-1 fis'4-\finger "2 - I pos." e'4-1 dis'4\4-4 |
+    
+    % Corda SOL (IV) - Interamente in Prima Posizione
+    \partial 2 cis'4-3 b4-2
+
+    % Barra di fine doppia
+    \bar "|."
+
+
   }
 
 }
