@@ -30,10 +30,10 @@ melody = {
   \break
   \mark \markup {"Pre strofa 2"}
 
-    aes'2.-4(  aes'8-4) g'8-3( | g'1-3) | 
-    aes'2.-4(  aes'8-4) g'8-3( | g'1-3) |
-    aes'2.-4(  aes'8-4) g'8-3( | g'1-3) |
-    aes'2.-4(  aes'8-4) g'8-3( | g'2-4) aes'8-4 g'8-3 f'8-2 es'8-1 |
+  aes'2.-4(  aes'8-4) g'8-3( | g'1-3) |
+  aes'2.-4(  aes'8-4) g'8-3( | g'1-3) |
+  aes'2.-4(  aes'8-4) g'8-3( | g'1-3) |
+  aes'2.-4(  aes'8-4) g'8-3( | g'2-4) aes'8-4 g'8-3 f'8-2 es'8-1 |
 
   \repeat volta 2 {
     \mark \markup {"Strofa 2"}
@@ -68,6 +68,8 @@ melody = {
     f'8-2) f'4-2  f'8-2  f'4-2  f'4-2
   }
 
+
+
   \break
 
   \mark \markup {"Intermezzo"}
@@ -79,8 +81,28 @@ melody = {
     \break
     des'4-4   des'4-4   des'4-4  des'8-4  c'8-3( |
     c'8-3) c'4-3  c'8-3  c'4-3  c'4-3
-    es'1-1 |  
-    es'1-1 |  
+    es'1-1 |
+    es'1-1 |
+  }
+
+  \break
+
+  \mark \markup {"Ultimo ritornello"}
+  \repeat volta 2 {
+    des'4-4   des'4-4   des'4-4  des'8-4  es'8-1( |
+    es'8-1) es'4-1  es'8-1  es'4-1  es'4-1
+    c'4-3   c'4-3   c'4-3  c'8-3  des'8-4( |
+    des'8-4) des'4-4  des'8-4  des'4-4  des'4-4
+  }
+
+  \break
+
+  \mark \markup {"Finale"}
+  \repeat volta 2 {
+    des'4-4   des'4-4   des'4-4  des'8-4  es'8-1( |
+    es'8-1) es'4-1  es'8-1  es'4-1  es'4-1 |
+    aes'4-4   aes'4-4   aes'4-4  g'8-3  aes'8-4( |
+    aes'1-4)
   }
 }
 
