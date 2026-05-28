@@ -16,58 +16,58 @@ gchords = \chordmode {
 
 melody = {
   \set Staff.instrumentName = "Vl."
-  \key b \major
+  \key aes \major
   \time 4/4
   \tempo 4 = 96
   \mark \markup {"Intro | Strofa 1 | Intermezzo 1"}
   \repeat volta 2 {
-    e'4-.-2   e'4-.   e'4-.  e'8  fis'8-3( | fis'8) fis'4-.  fis'8  fis'4-.  fis'4-.
-    fis'4-.   fis'4-.   fis'4-.  fis'8  gis'8-4( | gis'8) gis'4-.  gis'8  gis'4-.  gis'4-.
+    des'4-.-2   des'4-.   des'4-.  des'8  es'8-3( | es'8) es'4-.  es'8  es'4-.  es'4-.
+    es'4-.   es'4-.   es'4-.  es'8  f'8-4( | f'8) f'4-.  f'8  f'4-.  f'4-.
   }
 
   \break
   \mark \markup {"Pre strofa 2"}
   % \repeat volta 2 {
 
-    b'2.-2(  b'8) ais'8-1( | ais'1) | 
-    b'2.-2(  b'8) ais'8-1( | ais'1) |
-    b'2.-2(  b'8) ais'8-1( | ais'1) |
-    b'2.-2(  b'8) ais'8-1( | ais'2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
+    aes'2.-2(  aes'8) g'8-1( | g'1) | 
+    aes'2.-2(  aes'8) g'8-1( | g'1) |
+    aes'2.-2(  aes'8) g'8-1( | g'1) |
+    aes'2.-2(  aes'8) g'8-1( | g'2) aes'8-2 g'8-1 f'8-4 es'8-3 |
   % }
 
   \repeat volta 2 {
     \mark \markup {"Strofa 2"}
     \break
-    gis'1-4 | fis'2-3 b'8-2 ais'8-1 fis'8-3 dis'8-1| fis'2.-3( fis'8) dis'8-1( | dis'2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
+    f'1-4 | es'2-3 aes'8-2 g'8-1 es'8-3 c'8-1| es'2.-3( es'8) c'8-1( | c'2) aes'8-2 g'8-1 f'8-4 es'8-3 |
 
     \break
-    gis'1-4 | fis'2-3 b'8-2 ais'8-1 fis'8-3 dis'8-1| fis'2.-3( fis'8 )gis'8-4( | gis'1)  |
+    f'1-4 | es'2-3 aes'8-2 g'8-1 es'8-3 c'8-1| es'2.-3( es'8 )f'8-4( | f'1)  |
 
     \break
-    b'4-2 cis''8-3 b'8( b'4-2) cis''8-3 b'8( | b'4-2) cis''8-3 b'8( b'2)
+    aes'4-2 bes'8-3 aes'8( aes'4-2) bes'8-3 aes'8( | aes'4-2) bes'8-3 aes'8( aes'2)
 
     \break
-    b'4-2 cis''8-3 b'8( b'4-2) cis''8-3 b'8( | b'2-2) b'8-2 ais'8-1 gis'8-4 fis'8-3 |
+    aes'4-2 bes'8-3 aes'8( aes'4-2) bes'8-3 aes'8( | aes'2-2) aes'8-2 g'8-1 f'8-4 es'8-3 |
   }
 
   \break
 
   \mark \markup {"Ritornello"}
   \repeat volta 2 {
-    e'4-2   e'4   e'4  e'8  fis'8-3( | fis'8) fis'4  fis'8  fis'4  fis'4
-    b'4-2   b'4   b'4  b'8  gis'8-4( | gis'8) gis'4  gis'8  gis'4  gis'4
+    des'4-2   des'4   des'4  des'8  es'8-3( | es'8) es'4  es'8  es'4  es'4
+    aes'4-2   aes'4   aes'4  aes'8  f'8-4( | f'8) f'4  f'8  f'4  f'4
   }
 
   \break
 
   \mark \markup {"Intermezzo"}
   \repeat volta 2 {
-    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
-    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
+    des'4-2   des'4   des'4  des'8  c'8-1( | c'8) c'4  c'8  c'4  c'4
+    des'4-2   des'4   des'4  des'8  c'8-1( | c'8) c'4  c'8  c'4  c'4
     \break
-    e'4-2   e'4   e'4  e'8  dis'8-1( | dis'8) dis'4  dis'8  dis'4  dis'4
-    fis'1-3 |  
-    fis'1-3 |  
+    des'4-2   des'4   des'4  des'8  c'8-1( | c'8) c'4  c'8  c'4  c'4
+    es'1-3 |  
+    es'1-3 |  
   }
 }
 
