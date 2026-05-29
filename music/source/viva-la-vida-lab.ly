@@ -43,7 +43,7 @@ melody = {
     es'2.-1( es'8-1) c'8-3( |
     c'2-3) aes'8-4 g'8-3 f'8-2 es'8-1 |
 
-    \break
+   
     f'1-2 |
     es'2-1 aes'8-4 g'8-3 es'8-1 c'8-3 |
     es'2.-1( es'8-1 )f'8-2( |
@@ -53,7 +53,7 @@ melody = {
     aes'4-4 bes'8-1 aes'8-4( aes'4-4) bes'8-1 aes'8-4( |
     aes'4-4) bes'8-1 aes'8-4( aes'2-4)
 
-    \break
+  
     aes'4-4 bes'8-1 aes'8-4( aes'4-4) bes'8-1 aes'8-4( |
     aes'2-4) aes'8-4 g'8-3 f'8-2 es'8-1 |
   }
@@ -68,8 +68,6 @@ melody = {
     f'8-2) f'4-2  f'8-2  f'4-2  f'4-2
   }
 
-
-
   \break
 
   \mark \markup {"Intermezzo"}
@@ -78,7 +76,9 @@ melody = {
     c'8-3) c'4-3  c'8-3  c'4-3  c'4-3
     des'4-4   des'4-4   des'4-4  des'8-4  c'8-3( |
     c'8-3) c'4-3  c'8-3  c'4-3  c'4-3
+    
     \break
+
     des'4-4   des'4-4   des'4-4  des'8-4  c'8-3( |
     c'8-3) c'4-3  c'8-3  c'4-3  c'4-3
     es'1-1 |
