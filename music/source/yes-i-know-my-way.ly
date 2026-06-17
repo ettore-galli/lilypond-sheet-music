@@ -42,54 +42,43 @@ gchords = \chordmode {
 
 }
 
-
-
-
-
 melody = {
   \set Staff.instrumentName = "Vl."
   \key e \minor
   \time 4/4
 
-  \repeat volta 2 {
-    \mark \markup {"Intro"}
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
-  }
+  \mark \markup {"Intro"}
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
 
   \break
 
-  \repeat volta 2 {
-    \mark \markup {"Strofa"}
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
-    e'1  | e'4. fis'8( fis'2)
+  \mark \markup {"Strofa / solo"}
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
+  e'1  | e'4. fis'8( fis'2)
 
-    \break
-    e'1  | e'4. d'8( d'2)
-    e'1  | e'4. d'8( d'2)
+  \break
+  e'1  | e'4. d'8( d'2)
+  e'1  | e'4. d'8( d'2)
 
-    \break
-    fis'1  | fis'4. e'8( e'2)
-    fis'1  | fis'4. e'8( e'2)
+  \break
+  fis'1  | fis'4. e'8( e'2)
+  fis'1  | fis'4. e'8( e'2)
 
-    \break
-    e'1  | e'1
-    e'4. fis'8(fis'2)  | r8 f'4. r8 e'4.
-
-  }
+  \break
+  e'1  | e'1
+  e'4. fis'8(fis'2)  | r8 f'4. r8 e'4.
 
   \break
 
-  \repeat volta 2 {
-    \mark \markup {"Ritornello"}
-    g'1  | fis'1 | f'1  | e'1
-    g'1  | fis'1 | f'1  | e'1
-
-  }
+  \mark \markup {"Ritornello"}
+  g'1  | fis'1 | f'1  | e'1
+  \break
+  g'1  | fis'1 | f'1  | e'1
 
 }
 
@@ -103,10 +92,17 @@ melody = {
 
     \new ChordNames {
       \set chordChanges = ##t
+      \override ChordName.font-size = 3
       \gchords
     }
 
   >>
-  \layout { }
+  \layout {
+    \context {
+      \Score
+      spacing-between-staves = 22
+      spacing-pair = #'(22 . 22)
+    }
+  }
   \midi { \tempo 4 = 70 }
 }
