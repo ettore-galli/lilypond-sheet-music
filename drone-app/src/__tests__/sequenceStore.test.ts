@@ -1,17 +1,19 @@
+import { describe, it, expect, beforeEach } from 'vitest'
+
 import { loadState, saveState } from "../sequenceStore";
 import type { AppState } from "../sequenceStore";
 const KEY = "intonation-app-state";
 
-describe("sequenceStore", () => { 
-    beforeEach(() => { 
+describe("sequenceStore", () => {
+    beforeEach(() => {
         // Puliamo localStorage prima di ogni test
         localStorage.clear();
-    }); 
+    });
 
     it("loadState() ritorna lo stato di default se non c'è nulla", () => {
         const state = loadState();
 
-        expect(state).toEqual({ 
+        expect(state).toEqual({
             sequence: [],
             bpm: 120,
             loop: false,
