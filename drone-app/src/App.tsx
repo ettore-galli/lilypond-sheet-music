@@ -44,6 +44,7 @@ export default function App() {
       engine.playFreq(freq, beat);
 
       i++;
+      
       setTimeout(playNext, beat * 1000);
     }
 
