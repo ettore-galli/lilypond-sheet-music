@@ -1,31 +1,33 @@
-import type { IAudioEngine, SequencerNote, ITimer } from "./base/typeDefinitions";
+import { type IAudioEngine, SequencerNote, type ITimer } from "./base/typeDefinitions";
 import { AudioEngineNote, noteIntervalsMap } from "./base/typeDefinitions";
-
-
 
 class Sequencer {
     timer: ITimer
+    audioEngine: IAudioEngine;
+
     bpm: number
     loop: boolean
+    octave: number
     sequence: SequencerNote[]
     playSequence: boolean
     sequenceIndex: number
     staccatoFactor: number
 
-    audioEngine: IAudioEngine;
-
     constructor(
         timer: ITimer,
-        bpm: number,
-        loop: boolean,
-        sequence: SequencerNote[],
-        audioEngine: IAudioEngine
+        audioEngine: IAudioEngine,
+        bpm?: number,
+        loop?: boolean,
+        octave?: number,
+        sequence?: SequencerNote[],
     ) {
         this.timer = timer;
-        this.bpm = bpm;
-        this.loop = loop;
-        this.sequence = sequence;
         this.audioEngine = audioEngine;
+
+        this.bpm = bpm ?? 120;
+        this.loop = loop ?? false;
+        this.octave = octave ?? 4;
+        this.sequence = sequence ?? [];
 
         this.playSequence = false;
         this.sequenceIndex = 0;
@@ -36,9 +38,48 @@ class Sequencer {
         return 1000 * (60 / this.bpm);
     }
 
-    playNextNote(): void {
-        console.log("Play Next Note")
+    get bpmValue(): number {
+        return this.bpm;
+    }
 
+    set bpmValue(value: number) {
+        this.bpm = value;
+    }
+
+    get loopValue(): boolean {
+        return this.loop;
+    }
+
+    set loopValue(value: boolean) {
+        this.loop = value;
+    }
+
+    get octaveValue(): number {
+        return this.octave;
+    }
+
+    set octaveValue(value: number) {
+        this.octave = value;
+    }
+
+    get sequenceValue(): SequencerNote[] {
+        return this.sequence;
+    }
+
+    set sequenceValue(value: SequencerNote[]) {
+        this.sequence = value;
+    }
+
+    addNoteByName(noteName: string) {
+        const seqNote = new SequencerNote(
+            noteName, this.octave
+        )
+        this.sequence.push(seqNote);
+    }
+
+
+    playNextNote(): void {
+        
         if (this.playSequence && this.sequenceIndex >= this.sequence.length) {
             if (this.loop) {
                 this.sequenceIndex = 0;
@@ -47,8 +88,6 @@ class Sequencer {
                 return;
             }
         }
-        console.log(`this.playSequence=${this.playSequence}`)
-        console.log(`this =${this.playSequence}`)
 
         if (this.playSequence) {
             const note: AudioEngineNote = this.buildNote(

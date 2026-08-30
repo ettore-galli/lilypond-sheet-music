@@ -47,7 +47,6 @@ class mockAudioEngine {
     }
 
     playFreq(note: AudioEngineNote): void {
-        console.log(`Play::: ${note}`)
         this.sequence.push(note);
     }
 }
@@ -76,11 +75,10 @@ describe("sequencer", () => {
 
         const seq = new Sequencer(
             timer,
-            120,
-            false,
-            sequenceToPlay,
             new mockAudioEngine()
         );
+        seq.sequenceValue = sequenceToPlay;
+
         expect(seq.sequence).toEqual(sequenceToPlay);
     })
 
@@ -91,11 +89,9 @@ describe("sequencer", () => {
 
         const seq = new Sequencer(
             timer,
-            120,
-            false,
-            sequenceToPlay,
             audioEngine
         );
+        seq.sequenceValue = sequenceToPlay;
 
         seq.start();
 
@@ -162,3 +158,137 @@ describe("sequencer", () => {
         );
     })
 });
+
+describe("sequencer state management", () => {
+
+    const sequenceToPlay: SequencerNote[] = [
+        new SequencerNote(noteNamesMap.C, 4),
+        new SequencerNote(noteNamesMap.Csharp, 4),
+        new SequencerNote(noteNamesMap.D, 4),
+        new SequencerNote(noteNamesMap.DSharp, 4),
+        new SequencerNote(noteNamesMap.E, 4),
+        new SequencerNote(noteNamesMap.F, 4),
+        new SequencerNote(noteNamesMap.FSharp, 4),
+        new SequencerNote(noteNamesMap.G, 4),
+        new SequencerNote(noteNamesMap.GSharp, 4),
+        new SequencerNote(noteNamesMap.A, 4),
+        new SequencerNote(noteNamesMap.ASharp, 4),
+        new SequencerNote(noteNamesMap.B, 5),
+    ];
+
+    it("initial getter values are correct", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(
+            timer,
+            audioEngine
+        );
+        seq.sequenceValue = sequenceToPlay;
+
+        expect(seq.bpmValue).toBe(120);
+        expect(seq.loopValue).toBe(false);
+        expect(seq.sequenceValue).toEqual(sequenceToPlay);
+    });
+
+    it("setter correctly updates bpm", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(timer, audioEngine);
+
+        seq.bpmValue = 150;
+        expect(seq.bpmValue).toBe(150);
+    });
+
+    it("setter correctly updates loop", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(timer, audioEngine);
+
+        seq.loopValue = true;
+        expect(seq.loopValue).toBe(true);
+    });
+
+    it("setter correctly updates sequence", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(timer, audioEngine);
+
+        seq.sequenceValue = sequenceToPlay;
+        expect(seq.sequenceValue).toEqual(sequenceToPlay);
+    });
+
+
+    const baseSequence: SequencerNote[] = [
+        new SequencerNote(noteNamesMap.C, 4),
+        new SequencerNote(noteNamesMap.D, 4),
+    ];
+
+    it("addNoteByName correctly appends a note", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(
+            timer,
+            audioEngine
+        );
+        seq.sequenceValue = baseSequence.slice();
+
+        // octave è già impostato nel costruttore della tua classe
+        seq.addNoteByName(noteNamesMap.E);
+
+        expect(seq.sequenceValue).toEqual([
+            new SequencerNote(noteNamesMap.C, 4),
+            new SequencerNote(noteNamesMap.D, 4),
+            new SequencerNote(noteNamesMap.E, seq.octave),
+        ]);
+
+        expect(baseSequence).toEqual([ // baseSequence is not altered
+            new SequencerNote(noteNamesMap.C, 4),
+            new SequencerNote(noteNamesMap.D, 4),
+        ]);
+    });
+
+    it("addNoteByName uses current octave", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(timer, audioEngine);
+
+        // cambio l’ottava
+        seq.octave = 5;
+
+        seq.addNoteByName(noteNamesMap.GSharp);
+
+        expect(seq.sequenceValue).toEqual([
+            new SequencerNote(noteNamesMap.GSharp, 5),
+        ]);
+    });
+
+    it("addNoteByName increases sequence length by 1", () => {
+        const timer = new MockTimer();
+        const audioEngine = new mockAudioEngine();
+
+        const seq = new Sequencer(
+            timer,
+            audioEngine
+        );
+        seq.sequenceValue = baseSequence.slice();
+
+        expect(baseSequence).toEqual([ // baseSequence is not altered
+            new SequencerNote(noteNamesMap.C, 4),
+            new SequencerNote(noteNamesMap.D, 4),
+        ]);
+    
+        expect(seq.sequenceValue.length).toBe(2);
+
+        seq.addNoteByName(noteNamesMap.A);
+
+        expect(seq.sequenceValue.length).toBe(3);
+    });
+});
+
+

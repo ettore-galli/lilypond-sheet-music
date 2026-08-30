@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { loadState, saveState } from "../sequenceStore";
-import type { AppState } from "../sequenceStore";
+import { loadState, saveState } from "../applicationState";
+import type { AppState } from "../applicationState";
 const KEY = "intonation-app-state";
 
 describe("sequenceStore", () => {

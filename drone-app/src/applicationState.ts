@@ -1,4 +1,3 @@
-// sequenceStore.ts
 export interface AppState {
   sequence: string[];
   bpm: number;

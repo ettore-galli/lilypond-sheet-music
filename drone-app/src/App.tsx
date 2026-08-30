@@ -4,7 +4,7 @@ import { AudioEngine } from "./audioEngine";
 import { Timer } from "./timer";
 
 import { Sequencer } from "./sequencer";
-import { loadState, saveState } from "./sequenceStore";
+import { loadState, saveState } from "./applicationState";
 import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
@@ -17,13 +17,14 @@ const engine = new AudioEngine();
 
 export default function App() {
   const sequencerRef = useRef<Sequencer | null>(null);
+
   const [state, setState] = useState(loadState());
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const audioEngine: AudioEngine = new AudioEngine();
     const timer = new Timer();
-    sequencerRef.current = new Sequencer(timer, 120, false, [], audioEngine);
+    sequencerRef.current = new Sequencer(timer, audioEngine);
   }, []);
 
   useEffect(() => {
