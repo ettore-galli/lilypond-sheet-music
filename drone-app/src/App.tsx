@@ -1,18 +1,30 @@
 // App.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AudioEngine } from "./audioEngine";
+import { Timer } from "./timer";
+
+import { Sequencer } from "./sequencer";
 import { loadState, saveState } from "./sequenceStore";
 import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
 import { OctaveSelector } from "./components/OctaveSelector";
 import "./styles.css";
+import { AudioEngineNote } from "./base/typeDefinitions";
 
 const engine = new AudioEngine();
 
+
 export default function App() {
+  const sequencerRef = useRef<Sequencer | null>(null);
   const [state, setState] = useState(loadState());
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const audioEngine: AudioEngine = new AudioEngine();
+    const timer = new Timer();
+    sequencerRef.current = new Sequencer(timer, 120, false, [], audioEngine);
+  }, []);
 
   useEffect(() => {
     saveState(state);
@@ -41,10 +53,10 @@ export default function App() {
       const note = state.sequence[i];
       const freq = noteToFreq(note);
       setCurrentIndex(i);
-      engine.playFreq(freq, beat);
+      engine.playFreq(new AudioEngineNote(freq, beat));
 
       i++;
-      
+
       setTimeout(playNext, beat * 1000);
     }
 
