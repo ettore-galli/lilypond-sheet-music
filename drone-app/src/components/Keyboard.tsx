@@ -2,15 +2,16 @@
 import "../index.css";
 
 const NATURALS = ["C", "D", "E", "F", "G", "A", "B"];
-const SHARPS = ["C#", "D#", "", "F#", "G#", "A#", ""]; 
-const FLATS  = ["Db", "Eb", "", "Gb", "Ab", "Bb", ""]; 
+const SHARPS = ["C#", "D#", "", "F#", "G#", "A#", ""];
+const FLATS = ["Db", "Eb", "", "Gb", "Ab", "Bb", ""];
 
 interface Props {
   onNote: (note: string) => void;
-  octave: number;
+  onClear: () => void;
+  
 }
 
-export function Keyboard({ onNote, octave }: Props) {
+export function Keyboard({ onNote, onClear }: Props) {
   return (
     <div className="keyboard">
       {NATURALS.map((n, i) => (
@@ -18,7 +19,7 @@ export function Keyboard({ onNote, octave }: Props) {
           {/* tasto bianco */}
           <button
             className="white-key"
-            onClick={() => onNote(n + octave)}
+            onClick={() => onNote(n)}
           >
             <span className="white-label">{n}</span>
           </button>
@@ -27,7 +28,7 @@ export function Keyboard({ onNote, octave }: Props) {
           {SHARPS[i] && (
             <button
               className="black-key"
-              onClick={() => onNote(SHARPS[i] + octave)}
+              onClick={() => onNote(SHARPS[i])}
             >
               <span className="black-label-flat">{FLATS[i]}</span>
               <span className="black-label-sharp">{SHARPS[i]}</span>
@@ -35,6 +36,15 @@ export function Keyboard({ onNote, octave }: Props) {
           )}
         </div>
       ))}
+      <div key={"CLEAR"} className="key-wrapper">
+      <button
+              className="black-key"
+              onClick={() => onClear()}
+            >
+              <span className="black-label-flat">CLR</span>
+            </button>
+
+      </div>
     </div>
   );
 }

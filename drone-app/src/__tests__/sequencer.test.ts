@@ -227,7 +227,7 @@ describe("sequencer state management", () => {
         new SequencerNote(noteNamesMap.D, 4),
     ];
 
-    it("addNoteByName correctly appends a note", () => {
+    it("addNoteToSequence correctly appends a note", () => {
         const timer = new MockTimer();
         const audioEngine = new mockAudioEngine();
 
@@ -238,12 +238,12 @@ describe("sequencer state management", () => {
         seq.sequenceValue = baseSequence.slice();
 
         // octave è già impostato nel costruttore della tua classe
-        seq.addNoteByName(noteNamesMap.E);
+        seq.addNoteToSequence(new SequencerNote(noteNamesMap.E, 5));
 
         expect(seq.sequenceValue).toEqual([
             new SequencerNote(noteNamesMap.C, 4),
             new SequencerNote(noteNamesMap.D, 4),
-            new SequencerNote(noteNamesMap.E, seq.octave),
+            new SequencerNote(noteNamesMap.E, 5),
         ]);
 
         expect(baseSequence).toEqual([ // baseSequence is not altered
@@ -252,23 +252,22 @@ describe("sequencer state management", () => {
         ]);
     });
 
-    it("addNoteByName uses current octave", () => {
+    it("addNoteToSequence uses current octave", () => {
         const timer = new MockTimer();
         const audioEngine = new mockAudioEngine();
 
         const seq = new Sequencer(timer, audioEngine);
 
-        // cambio l’ottava
-        seq.octave = 5;
 
-        seq.addNoteByName(noteNamesMap.GSharp);
+
+        seq.addNoteToSequence(new SequencerNote(noteNamesMap.GSharp, 6));
 
         expect(seq.sequenceValue).toEqual([
-            new SequencerNote(noteNamesMap.GSharp, 5),
+            new SequencerNote(noteNamesMap.GSharp, 6),
         ]);
     });
 
-    it("addNoteByName increases sequence length by 1", () => {
+    it("addNoteToSequence increases sequence length by 1", () => {
         const timer = new MockTimer();
         const audioEngine = new mockAudioEngine();
 
@@ -282,10 +281,10 @@ describe("sequencer state management", () => {
             new SequencerNote(noteNamesMap.C, 4),
             new SequencerNote(noteNamesMap.D, 4),
         ]);
-    
+
         expect(seq.sequenceValue.length).toBe(2);
 
-        seq.addNoteByName(noteNamesMap.A);
+        seq.addNoteToSequence(new SequencerNote(noteNamesMap.A, 3));
 
         expect(seq.sequenceValue.length).toBe(3);
     });

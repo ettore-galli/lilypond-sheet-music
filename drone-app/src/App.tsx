@@ -4,15 +4,23 @@ import { AudioEngine } from "./audioEngine";
 import { Timer } from "./timer";
 
 import { Sequencer } from "./sequencer";
-import { loadState, saveState } from "./applicationState";
+import { loadState, saveState, type AppState } from "./applicationState";
 import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
 import { OctaveSelector } from "./components/OctaveSelector";
 import "./styles.css";
-import { AudioEngineNote } from "./base/typeDefinitions";
+import { SequencerNote } from "./base/typeDefinitions";
 
 const engine = new AudioEngine();
+
+function updateSequencer(seq: Sequencer, state: AppState) {
+  seq.bpmValue = state.bpm;
+  seq.loopValue = state.loop;
+  seq.sequenceValue = state.sequence ? state.sequence.map((item) => {
+    return new SequencerNote(item.noteName, item.octave)
+  }) : [];
+}
 
 
 export default function App() {
@@ -31,46 +39,74 @@ export default function App() {
     saveState(state);
   }, [state]);
 
+  useEffect(() => {
+    const seq = sequencerRef.current;
+    if (!seq) return;
+    updateSequencer(seq, state);
+  }, [state]);
+
+
   function addNote(note: string) {
     if (state.sequence.length < 16) {
-      setState({ ...state, sequence: [...state.sequence, note] });
+      setState({
+        ...state, sequence: [...state.sequence,
+        { "noteName": note, "octave": state.octave }
+        ]
+      });
     }
   }
 
+  function clearSequence() {
+    if (state.sequence.length < 16) {
+      setState({
+        ...state, sequence: []
+      });
+    }
+  }
   function start() {
-    let i = 0;
-    const beat = 60 / state.bpm;
-
-    function playNext() {
-      if (i >= state.sequence.length) {
-        if (state.loop) {
-          i = 0;
-        } else {
-          setCurrentIndex(null);
-          return;
-        }
-      }
-
-      const note = state.sequence[i];
-      const freq = noteToFreq(note);
-      setCurrentIndex(i);
-      engine.playFreq(new AudioEngineNote(freq, beat));
-
-      i++;
-
-      setTimeout(playNext, beat * 1000);
-    }
-
-    playNext();
+    sequencerRef.current?.start();
   }
-
   function stop() {
-    setCurrentIndex(null);
+    sequencerRef.current?.stop();
+  }
+  function reset() {
+    sequencerRef.current?.start();
   }
 
-  function reset() {
-    setCurrentIndex(null);
-  }
+  // function start() {
+  //   let i = 0;
+  //   const beat = 60 / state.bpm;
+
+  //   function playNext() {
+  //     if (i >= state.sequence.length) {
+  //       if (state.loop) {
+  //         i = 0;
+  //       } else {
+  //         setCurrentIndex(null);
+  //         return;
+  //       }
+  //     }
+
+  //     const note = state.sequence[i];
+  //     const freq = noteToFreq(note);
+  //     setCurrentIndex(i);
+  //     engine.playFreq(new AudioEngineNote(freq, beat));
+
+  //     i++;
+
+  //     setTimeout(playNext, beat * 1000);
+  //   }
+
+  //   playNext();
+  // }
+
+  // function stop() {
+  //   setCurrentIndex(null);
+  // }
+
+  // function reset() {
+  //   setCurrentIndex(null);
+  // }
 
   return (
     <div className="app">
@@ -91,25 +127,28 @@ export default function App() {
         onChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
       />
 
-      <Keyboard onNote={addNote} octave={state.octave} />
+      <Keyboard
+        onNote={addNote}
+        onClear={clearSequence}
+      />
     </div>
   );
 }
 
-function noteToFreq(note: string): number {
-  const A4 = 440;
-  const map: Record<string, number> = {
-    C: -9, "C#": -8, Db: -8,
-    D: -7, "D#": -6, Eb: -6,
-    E: -5,
-    F: -4, "F#": -3, Gb: -3,
-    G: -2, "G#": -1, Ab: -1,
-    A: 0, "A#": 1, Bb: 1,
-    B: 2
-  };
+// function noteToFreq(note: string): number {
+//   const A4 = 440;
+//   const map: Record<string, number> = {
+//     C: -9, "C#": -8, Db: -8,
+//     D: -7, "D#": -6, Eb: -6,
+//     E: -5,
+//     F: -4, "F#": -3, Gb: -3,
+//     G: -2, "G#": -1, Ab: -1,
+//     A: 0, "A#": 1, Bb: 1,
+//     B: 2
+//   };
 
-  const name = note.slice(0, -1);
-  const oct = Number(note.slice(-1));
-  const semitone = map[name] + (oct - 4) * 12;
-  return A4 * Math.pow(2, semitone / 12);
-}
+//   const name = note.slice(0, -1);
+//   const oct = Number(note.slice(-1));
+//   const semitone = map[name] + (oct - 4) * 12;
+//   return A4 * Math.pow(2, semitone / 12);
+// }

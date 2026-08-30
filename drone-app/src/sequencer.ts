@@ -7,7 +7,6 @@ class Sequencer {
 
     bpm: number
     loop: boolean
-    octave: number
     sequence: SequencerNote[]
     playSequence: boolean
     sequenceIndex: number
@@ -18,7 +17,6 @@ class Sequencer {
         audioEngine: IAudioEngine,
         bpm?: number,
         loop?: boolean,
-        octave?: number,
         sequence?: SequencerNote[],
     ) {
         this.timer = timer;
@@ -26,7 +24,6 @@ class Sequencer {
 
         this.bpm = bpm ?? 120;
         this.loop = loop ?? false;
-        this.octave = octave ?? 4;
         this.sequence = sequence ?? [];
 
         this.playSequence = false;
@@ -54,14 +51,6 @@ class Sequencer {
         this.loop = value;
     }
 
-    get octaveValue(): number {
-        return this.octave;
-    }
-
-    set octaveValue(value: number) {
-        this.octave = value;
-    }
-
     get sequenceValue(): SequencerNote[] {
         return this.sequence;
     }
@@ -70,16 +59,13 @@ class Sequencer {
         this.sequence = value;
     }
 
-    addNoteByName(noteName: string) {
-        const seqNote = new SequencerNote(
-            noteName, this.octave
-        )
-        this.sequence.push(seqNote);
+    addNoteToSequence(note: SequencerNote) {
+        this.sequence.push(note);
     }
 
 
     playNextNote(): void {
-        
+
         if (this.playSequence && this.sequenceIndex >= this.sequence.length) {
             if (this.loop) {
                 this.sequenceIndex = 0;
@@ -121,8 +107,10 @@ class Sequencer {
     }
 
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {
+        
         const semitone: number = noteIntervalsMap[note.noteName] + (note.octave - 4) * 12;
         const frequency: number = diapason * Math.pow(2, semitone / 12);
+        console.log(`BUILD NOTE: ${note.noteName} ${note.octave} ==>  f: ${frequency}, d: ${duration}`)
         return new AudioEngineNote(
             frequency, duration
         );

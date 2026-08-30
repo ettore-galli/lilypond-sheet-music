@@ -1,10 +1,18 @@
-// SequenceGrid.tsx
+import type { AppSequencerNote } from "../applicationState";
+
 interface Props {
-  sequence: string[];
+  sequence: AppSequencerNote[];
   currentIndex: number | null;
 }
 
 export function SequenceGrid({ sequence, currentIndex }: Props) {
+  const getSequenceDisplayValue: (note: AppSequencerNote | undefined) => string = (note) => {
+    if (note !== undefined) {
+      return note.noteName || String(note.octave);
+    }
+    return "";
+  }
+
   return (
     <div className="grid">
       {Array.from({ length: 16 }).map((_, i) => (
@@ -16,7 +24,7 @@ export function SequenceGrid({ sequence, currentIndex }: Props) {
             (sequence[i] ? " filled" : "")
           }
         >
-          {sequence[i] || ""}
+          {getSequenceDisplayValue(sequence[i])}
         </div>
       ))}
     </div>

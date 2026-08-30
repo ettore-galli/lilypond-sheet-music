@@ -1,5 +1,9 @@
+export interface AppSequencerNote {
+  noteName: string;
+  octave: number;
+}
 export interface AppState {
-  sequence: string[];
+  sequence: AppSequencerNote[];
   bpm: number;
   loop: boolean;
   octave: number;
