@@ -96,7 +96,7 @@ describe("sequencer", () => {
         seq.start();
 
         expect(audioEngine.sequence).toEqual([
-            new AudioEngineNote(523.2511306011972, 450),
+            new AudioEngineNote(523.2511306011972, 0.450),
         ]);
 
         for (let i = 0; i < 11; i++) {
@@ -107,51 +107,51 @@ describe("sequencer", () => {
             [
                 new AudioEngineNote(
                     523.2511306011972,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     554.3652619537442,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     587.3295358348151,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     622.2539674441618,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     659.2551138257398,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     698.4564628660078,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     739.9888454232688,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     783.9908719634985,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     830.6093951598903,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     440,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     466.1637615180899,
-                    450,
+                    0.450,
                 ),
                 new AudioEngineNote(
                     987.7666025122483,
-                    450,
+                    0.450,
                 ),
             ]
 

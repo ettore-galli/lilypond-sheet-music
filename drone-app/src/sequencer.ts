@@ -31,8 +31,11 @@ class Sequencer {
         this.staccatoFactor = 0.9;
     }
 
+    getNoteDurationSeconds(): number {
+        return (60 / this.bpm);
+    }
     getNoteDurationMilliseconds(): number {
-        return 1000 * (60 / this.bpm);
+        return 1000 * this.getNoteDurationSeconds();
     }
 
     get bpmValue(): number {
@@ -77,13 +80,13 @@ class Sequencer {
 
         if (this.playSequence) {
             const note: AudioEngineNote = this.buildNote(
-                this.sequence[this.sequenceIndex], this.staccatoFactor * this.getNoteDurationMilliseconds()
+                this.sequence[this.sequenceIndex], this.staccatoFactor * this.getNoteDurationSeconds()
             )
 
             this.audioEngine.playFreq(note);
 
             this.sequenceIndex++;
-
+            console.log("SECONDS" ,this.getNoteDurationSeconds())
             this.timer.setTimeout(
                 () => { this.playNextNote() },
                 this.getNoteDurationMilliseconds()
@@ -107,7 +110,7 @@ class Sequencer {
     }
 
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {
-        
+
         const semitone: number = noteIntervalsMap[note.noteName] + (note.octave - 4) * 12;
         const frequency: number = diapason * Math.pow(2, semitone / 12);
         console.log(`BUILD NOTE: ${note.noteName} ${note.octave} ==>  f: ${frequency}, d: ${duration}`)
