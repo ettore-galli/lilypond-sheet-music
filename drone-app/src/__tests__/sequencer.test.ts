@@ -103,8 +103,6 @@ describe("sequencer", () => {
             timer.advanceTimeBy(501);
         }
 
-        console.log("SEQIUENCE")
-        console.log(audioEngine.sequence)
         expect(audioEngine.sequence).toEqual(
             [
                 new AudioEngineNote(440, 0.45),
@@ -203,7 +201,6 @@ describe("sequencer state management", () => {
         );
         seq.sequenceValue = baseSequence.slice();
 
-        // octave è già impostato nel costruttore della tua classe
         seq.addNoteToSequence(new SequencerNote(noteNamesMap.E, 5));
 
         expect(seq.sequenceValue).toEqual([

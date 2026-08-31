@@ -26,7 +26,6 @@ export class AudioEngine implements IAudioEngine {
 
     osc.connect(gain).connect(this.ctx.destination);
     osc.start(now);
-    console.log("START/DUR/STOP", now, note.duration, now + note.duration)
     osc.stop(now + note.duration);
   }
 }

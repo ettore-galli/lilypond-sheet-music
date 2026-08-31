@@ -86,7 +86,7 @@ class Sequencer {
             this.audioEngine.playFreq(note);
 
             this.sequenceIndex++;
-            console.log("SECONDS" ,this.getNoteDurationSeconds())
+
             this.timer.setTimeout(
                 () => { this.playNextNote() },
                 this.getNoteDurationMilliseconds()
@@ -112,7 +112,7 @@ class Sequencer {
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {
         const semitone: number = noteIntervalsMap[note.noteName] + (note.octave - 4) * 12;
         const frequency: number = diapason * Math.pow(2, semitone / 12);
-        console.log(`BUILD NOTE: ${note.noteName} ${note.octave} ==>  f: ${frequency}, d: ${duration}`)
+
         return new AudioEngineNote(
             frequency, duration
         );
