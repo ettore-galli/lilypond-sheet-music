@@ -8,7 +8,7 @@ interface Props {
 export function SequenceGrid({ sequence, currentIndex }: Props) {
   const getSequenceDisplayValue: (note: AppSequencerNote | undefined) => string = (note) => {
     if (note !== undefined) {
-      return note.noteName || String(note.octave);
+      return `${note.noteName}${String(note.octave)}`;
     }
     return "";
   }

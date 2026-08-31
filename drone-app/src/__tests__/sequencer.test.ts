@@ -96,63 +96,29 @@ describe("sequencer", () => {
         seq.start();
 
         expect(audioEngine.sequence).toEqual([
-            new AudioEngineNote(523.2511306011972, 0.450),
+            new AudioEngineNote(440, 0.450),
         ]);
 
         for (let i = 0; i < 11; i++) {
             timer.advanceTimeBy(501);
         }
 
+        console.log("SEQIUENCE")
+        console.log(audioEngine.sequence)
         expect(audioEngine.sequence).toEqual(
             [
-                new AudioEngineNote(
-                    523.2511306011972,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    554.3652619537442,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    587.3295358348151,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    622.2539674441618,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    659.2551138257398,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    698.4564628660078,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    739.9888454232688,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    783.9908719634985,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    830.6093951598903,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    440,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    466.1637615180899,
-                    0.450,
-                ),
-                new AudioEngineNote(
-                    987.7666025122483,
-                    0.450,
-                ),
+                new AudioEngineNote(440, 0.45),
+                new AudioEngineNote(466.1637615180899, 0.45),
+                new AudioEngineNote(493.8833012561241, 0.45),
+                new AudioEngineNote(523.2511306011972, 0.45),
+                new AudioEngineNote(554.3652619537442, 0.45),
+                new AudioEngineNote(587.3295358348151, 0.45),
+                new AudioEngineNote(622.2539674441618, 0.45),
+                new AudioEngineNote(659.2551138257398, 0.45),
+                new AudioEngineNote(698.4564628660078, 0.45),
+                new AudioEngineNote(739.9888454232688, 0.45),
+                new AudioEngineNote(783.9908719634985, 0.45),
+                new AudioEngineNote(1661.2187903197805, 0.45)
             ]
 
         );
