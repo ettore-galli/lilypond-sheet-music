@@ -86,14 +86,14 @@ body {
   color: #000;
   border: 2px solid #333;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .white-label {
-  position: absolute;
-  bottom: 4px;
-  width: 100%;
-  text-align: center;
-  font-size: 1rem;
+  position: static;
+  margin-bottom: 4px;
 }
 
 .black-key {
@@ -103,7 +103,7 @@ body {
   color: #fff;
   border: 2px solid #555;
   position: absolute;
-  left: 35px;
+  left: 33px;
   top: 0;
   z-index: 2;
 }
@@ -118,4 +118,23 @@ body {
   display: block;
   font-size: 0.8rem;
   text-align: center;
+}
+
+
+.clear-key {
+  width: 50px;
+  height: 120px;
+  background: #aaa;
+  color: #000;
+  border: 2px solid #333;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.clear-label {
+  font-weight: bold;
+  position: static;
+  margin-bottom: 4px;
 }

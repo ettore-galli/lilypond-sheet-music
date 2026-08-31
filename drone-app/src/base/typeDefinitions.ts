@@ -7,17 +7,23 @@ export interface ITimer {
 
 export const noteNamesMap: Record<string, string> = {
     C: "C",
-    Csharp: "C#",
+    CSharp: "C#",
+    DFlat: "Db",
     D: "D",
     DSharp: "D#",
+    EFlat: "Eb",
     E: "E",
     F: "F",
     FSharp: "F#",
+    GFlat: "Gb",
     G: "G",
     GSharp: "G#",
+    AFlat: "Ab",
     A: "A",
     ASharp: "A#",
+    BFlat: "Bb",
     B: "B",
+    NoKey: ""
 };
 
 
@@ -25,7 +31,7 @@ type NoteIntervals = Record<string, number>;
 
 export const noteIntervalsMap: NoteIntervals = {
     [noteNamesMap.C]: 0,
-    [noteNamesMap.Csharp]: 1,
+    [noteNamesMap.CSharp]: 1,
     [noteNamesMap.D]: 2,
     [noteNamesMap.DSharp]: 3,
     [noteNamesMap.E]: 4,

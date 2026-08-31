@@ -56,7 +56,7 @@ class mockAudioEngine {
 describe("sequencer", () => {
     const sequenceToPlay: SequencerNote[] = [
         new SequencerNote(noteNamesMap.C, 4),
-        new SequencerNote(noteNamesMap.Csharp, 4),
+        new SequencerNote(noteNamesMap.CSharp, 4),
         new SequencerNote(noteNamesMap.D, 4),
         new SequencerNote(noteNamesMap.DSharp, 4),
         new SequencerNote(noteNamesMap.E, 4),
@@ -127,7 +127,7 @@ describe("sequencer state management", () => {
 
     const sequenceToPlay: SequencerNote[] = [
         new SequencerNote(noteNamesMap.C, 4),
-        new SequencerNote(noteNamesMap.Csharp, 4),
+        new SequencerNote(noteNamesMap.CSharp, 4),
         new SequencerNote(noteNamesMap.D, 4),
         new SequencerNote(noteNamesMap.DSharp, 4),
         new SequencerNote(noteNamesMap.E, 4),
