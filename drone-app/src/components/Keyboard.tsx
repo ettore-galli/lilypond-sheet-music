@@ -1,4 +1,4 @@
-// import type { JSX } from "react";
+import type { JSX } from "react";
 import { noteNamesMap } from "../base/typeDefinitions";
 
 const NATURALS = [noteNamesMap.C, noteNamesMap.D, noteNamesMap.E, noteNamesMap.F, noteNamesMap.G, noteNamesMap.A, noteNamesMap.B];
@@ -11,47 +11,54 @@ interface Props {
 
 }
 
-// const buildWhiteKey: (() => JSX.Element) = () => {
-//   return <></>
-// }
-
 export function Keyboard({ onNote, onClear }: Props) {
+
+  const buildWhiteKey: ((noteName: string) => JSX.Element) = (noteName: string) => {
+    return <button
+      className="white-key"
+      onClick={() => onNote(noteName)}
+    >
+      <span className="white-label">{noteName}</span>
+    </button>
+  }
+
+  const buildBlackKey: ((flatNoteName: string, sharpNoteName: string) => JSX.Element) = (flatNoteName: string, sharpNoteName: string) => {
+    return <button
+      className="black-key"
+      onClick={() => onNote(sharpNoteName)}
+    >
+      <span className="black-label-flat">{flatNoteName}</span>
+      <span className="black-label-sharp">{sharpNoteName}</span>
+    </button>
+  }
+
+  const buildClearKey: (() => JSX.Element) = () => {
+    return <button
+      className="clear-key"
+      onClick={() => onClear()}
+    >
+      <span className="clear-label">CLR</span>
+    </button>
+  }
+
   return (
     <div className="keyboard">
 
       {NATURALS.map((n, i) => (
         <div key={i} className="key-wrapper">
 
-          {/* tasto bianco */}
-          <button
-            className="key-base white-key"
-            onClick={() => onNote(n)}
-          >
-            <span className="white-label">{n}</span>
-          </button>
+          {buildWhiteKey(n)}
 
           {/* tasto nero sfalsato */}
           {(SHARPS[i] && SHARPS[i] !== noteNamesMap.NoKey) && (
-            <button
-              className="key-base black-key"
-              onClick={() => onNote(SHARPS[i])}
-            >
-              <span className="black-label-flat">{FLATS[i]}</span>
-              <span className="black-label-sharp">{SHARPS[i]}</span>
-            </button>
+            buildBlackKey(FLATS[i], SHARPS[i])
           )}
 
         </div>
       ))}
 
       <div key={"CLEAR"} className="key-wrapper">
-        <button
-          className="key-base clear-key"
-          onClick={() => onClear()}
-        >
-          <span className="clear-label">CLR</span>
-        </button>
-
+        {buildClearKey()}
       </div>
 
     </div>
