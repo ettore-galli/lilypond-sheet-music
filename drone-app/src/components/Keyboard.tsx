@@ -21,10 +21,10 @@ export function Keyboard({ onNote, onClear }: Props) {
 
       {NATURALS.map((n, i) => (
         <div key={i} className="key-wrapper">
-          
+
           {/* tasto bianco */}
           <button
-            className="white-key"
+            className="key-base white-key"
             onClick={() => onNote(n)}
           >
             <span className="white-label">{n}</span>
@@ -33,7 +33,7 @@ export function Keyboard({ onNote, onClear }: Props) {
           {/* tasto nero sfalsato */}
           {(SHARPS[i] && SHARPS[i] !== noteNamesMap.NoKey) && (
             <button
-              className="black-key"
+              className="key-base black-key"
               onClick={() => onNote(SHARPS[i])}
             >
               <span className="black-label-flat">{FLATS[i]}</span>
@@ -46,7 +46,7 @@ export function Keyboard({ onNote, onClear }: Props) {
 
       <div key={"CLEAR"} className="key-wrapper">
         <button
-          className="clear-key"
+          className="key-base clear-key"
           onClick={() => onClear()}
         >
           <span className="clear-label">CLR</span>
