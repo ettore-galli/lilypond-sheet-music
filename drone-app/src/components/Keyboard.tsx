@@ -1,5 +1,4 @@
 import { noteNamesMap } from "../base/typeDefinitions";
-import "../index.css";
 
 const NATURALS = [noteNamesMap.C, noteNamesMap.D, noteNamesMap.E, noteNamesMap.F, noteNamesMap.G, noteNamesMap.A, noteNamesMap.B];
 const SHARPS = [noteNamesMap.CSharp, noteNamesMap.DSharp, noteNamesMap.NoKey, noteNamesMap.FSharp, noteNamesMap.GSharp, noteNamesMap.ASharp, noteNamesMap.NoKey];
