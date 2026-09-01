@@ -96,27 +96,29 @@ describe("sequencer", () => {
         seq.start();
 
         expect(audioEngine.sequence).toEqual([
-            new AudioEngineNote(440, 0.450),
+            new AudioEngineNote(261.6255653005986, 0.450),
         ]);
 
         for (let i = 0; i < 11; i++) {
             timer.advanceTimeBy(501);
         }
-
+        audioEngine.sequence.forEach((n) => {
+            console.log("new AudioEngineNote(", n.freq, n.duration, "),")
+        })
         expect(audioEngine.sequence).toEqual(
             [
+                new AudioEngineNote(261.6255653005986, 0.45),
+                new AudioEngineNote(277.1826309768721, 0.45),
+                new AudioEngineNote(293.6647679174076, 0.45),
+                new AudioEngineNote(311.1269837220809, 0.45),
+                new AudioEngineNote(329.6275569128699, 0.45),
+                new AudioEngineNote(349.2282314330039, 0.45),
+                new AudioEngineNote(369.9944227116344, 0.45),
+                new AudioEngineNote(391.99543598174927, 0.45),
+                new AudioEngineNote(415.3046975799451, 0.45),
                 new AudioEngineNote(440, 0.45),
                 new AudioEngineNote(466.1637615180899, 0.45),
-                new AudioEngineNote(493.8833012561241, 0.45),
-                new AudioEngineNote(523.2511306011972, 0.45),
-                new AudioEngineNote(554.3652619537442, 0.45),
-                new AudioEngineNote(587.3295358348151, 0.45),
-                new AudioEngineNote(622.2539674441618, 0.45),
-                new AudioEngineNote(659.2551138257398, 0.45),
-                new AudioEngineNote(698.4564628660078, 0.45),
-                new AudioEngineNote(739.9888454232688, 0.45),
-                new AudioEngineNote(783.9908719634985, 0.45),
-                new AudioEngineNote(1661.2187903197805, 0.45)
+                new AudioEngineNote(987.7666025122483, 0.45),
             ]
 
         );

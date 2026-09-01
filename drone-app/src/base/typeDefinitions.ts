@@ -30,18 +30,18 @@ export const noteNamesMap: Record<string, string> = {
 type NoteIntervals = Record<string, number>;
 
 export const noteIntervalsMap: NoteIntervals = {
-    [noteNamesMap.C]: 0,
-    [noteNamesMap.CSharp]: 1,
-    [noteNamesMap.D]: 2,
-    [noteNamesMap.DSharp]: 3,
-    [noteNamesMap.E]: 4,
-    [noteNamesMap.F]: 5,
-    [noteNamesMap.FSharp]: 6,
-    [noteNamesMap.G]: 7,
-    [noteNamesMap.GSharp]: 8,
-    [noteNamesMap.A]: 9,
-    [noteNamesMap.ASharp]: 10,
-    [noteNamesMap.B]: 11,
+    [noteNamesMap.C]: -9,
+    [noteNamesMap.CSharp]: -8,
+    [noteNamesMap.D]: -7,
+    [noteNamesMap.DSharp]: -6,
+    [noteNamesMap.E]: -5,
+    [noteNamesMap.F]: -4,
+    [noteNamesMap.FSharp]: -3,
+    [noteNamesMap.G]: -2,
+    [noteNamesMap.GSharp]: -1,
+    [noteNamesMap.A]: 0,
+    [noteNamesMap.ASharp]: 1,
+    [noteNamesMap.B]: 2,
 }
 
 export class SequencerNote {
