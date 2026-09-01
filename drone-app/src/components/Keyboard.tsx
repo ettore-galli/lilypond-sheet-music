@@ -1,3 +1,4 @@
+// import type { JSX } from "react";
 import { noteNamesMap } from "../base/typeDefinitions";
 
 const NATURALS = [noteNamesMap.C, noteNamesMap.D, noteNamesMap.E, noteNamesMap.F, noteNamesMap.G, noteNamesMap.A, noteNamesMap.B];
@@ -10,11 +11,17 @@ interface Props {
 
 }
 
+// const buildWhiteKey: (() => JSX.Element) = () => {
+//   return <></>
+// }
+
 export function Keyboard({ onNote, onClear }: Props) {
   return (
     <div className="keyboard">
+
       {NATURALS.map((n, i) => (
         <div key={i} className="key-wrapper">
+          
           {/* tasto bianco */}
           <button
             className="white-key"
@@ -33,8 +40,10 @@ export function Keyboard({ onNote, onClear }: Props) {
               <span className="black-label-sharp">{SHARPS[i]}</span>
             </button>
           )}
+
         </div>
       ))}
+
       <div key={"CLEAR"} className="key-wrapper">
         <button
           className="clear-key"
@@ -44,6 +53,7 @@ export function Keyboard({ onNote, onClear }: Props) {
         </button>
 
       </div>
+
     </div>
   );
 }
