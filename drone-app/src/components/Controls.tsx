@@ -1,4 +1,3 @@
-// Controls.tsx
 interface Props {
   bpm: number;
   loop: boolean;

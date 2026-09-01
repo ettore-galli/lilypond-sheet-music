@@ -1,4 +1,3 @@
-// OctaveSelector.tsx
 interface Props {
   octave: number;
   onChange: (oct: number) => void;

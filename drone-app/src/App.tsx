@@ -1,4 +1,3 @@
-// App.tsx
 import { useEffect, useState, useRef } from "react";
 import { AudioEngine } from "./audioEngine";
 import { Timer } from "./timer";
@@ -12,7 +11,6 @@ import { OctaveSelector } from "./components/OctaveSelector";
 import "./styles.css";
 import { SequencerNote } from "./base/typeDefinitions";
 
-const engine = new AudioEngine();
 
 function updateSequencer(seq: Sequencer, state: AppState) {
   seq.bpmValue = state.bpm;
