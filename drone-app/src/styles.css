@@ -55,21 +55,27 @@ button {
   gap: 10px;
 }
 
+
+
 .controls-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
+  align-items: stretch;
+  /* uniforma altezza */
 }
 
 .controls-row>* {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
+}
+
+.double-width {
+  grid-column: span 2;
 }
 
 .label-display {
@@ -88,9 +94,6 @@ button {
   background-color: default;
 }
 
-/* .bpm-display {
-  background-color: #999;
-} */
 
 .octave-row button {
   background-color: default;
@@ -101,7 +104,6 @@ button {
   background-color: #999;
 }
 
-/* Tastiera */
 .keyboard {
   display: flex;
   gap: 2px;
