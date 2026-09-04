@@ -35,7 +35,8 @@ button {
 
 .cell {
   border: 2px solid #444;
-  padding: 1px;
+  padding: 10px;
+  border-radius: 10px;
   text-align: center;
   min-height: 40px;
 }
@@ -54,8 +55,6 @@ button {
   flex-direction: column;
   gap: 10px;
 }
-
-
 
 .controls-row {
   display: grid;
@@ -88,12 +87,13 @@ button {
 
 .loop-on {
   background-color: yellow;
+  color: #444;
 }
 
 .loop-off {
   background-color: default;
+  color: inherit;
 }
-
 
 .octave-row button {
   background-color: default;
