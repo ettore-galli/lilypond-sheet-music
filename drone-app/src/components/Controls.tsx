@@ -19,17 +19,23 @@ export function Controls({
 }: Props) {
   return (
     <div className="controls">
-      <button onClick={onStart}>Start</button>
-      <button onClick={onStop}>Stop</button>
-      <button onClick={onReset}>Reset</button>
 
-      <button onClick={() => onBpmChange(-5)}>Tempo −</button>
-      <span className="bpm-display">{bpm} BPM</span>
-      <button onClick={() => onBpmChange(+5)}>Tempo +</button>
+      <div className="controls-section">
+        <button onClick={onStart}>Start</button>
+        <button onClick={onStop}>Stop</button>
+        <button onClick={onReset}>Reset</button>
+      </div>
 
-      <button onClick={onToggleLoop}>
-        Loop: {loop ? "ON" : "OFF"}
-      </button>
+      <div className="controls-section">
+        <button onClick={() => onBpmChange(-5)}>Tempo −</button>
+        <span className="bpm-display">{bpm} BPM</span>
+        <button onClick={() => onBpmChange(+5)}>Tempo +</button>
+
+        <button onClick={onToggleLoop}>
+          Loop: {loop ? "ON" : "OFF"}
+        </button>
+      </div>
+
     </div>
   );
 }
