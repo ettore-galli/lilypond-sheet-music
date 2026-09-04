@@ -7,12 +7,7 @@ interface Props {
 }
 
 export function SequenceGrid({ sequence, currentIndex }: Props) {
-  const getSequenceDisplayValue: (note: AppSequencerNote | undefined) => (string | number)[] = (note) => {
-    if (note !== undefined) {
-      return [note.noteName, note.octave];
-    }
-    return [];
-  }
+
   const renderSequenceDisplayValue: ((note: AppSequencerNote | undefined) => JSX.Element) = (note: AppSequencerNote | undefined) => {
     if (note !== undefined) {
       return (
@@ -20,7 +15,6 @@ export function SequenceGrid({ sequence, currentIndex }: Props) {
           <span>{note.noteName}</span><span className="subscript">{note.octave}</span>
         </>
       );
-
     }
     return <></>;
   }
