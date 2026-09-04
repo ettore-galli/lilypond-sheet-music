@@ -30,8 +30,9 @@ export function Controls({
         <span className="label-display">BPM</span><span className="value-display">{bpm}</span>
         <button onClick={() => onBpmChange(-5)}>−</button>
         <button onClick={() => onBpmChange(+5)}>+</button>
+        <span className="label-display">BPM</span>
         <button className={loop ? "loop-on" : "loop-off"} onClick={onToggleLoop}>
-          LOOP: {loop ? "ON" : "OFF"}
+          {loop ? "ON" : "OFF"}
         </button>
       </div>
 

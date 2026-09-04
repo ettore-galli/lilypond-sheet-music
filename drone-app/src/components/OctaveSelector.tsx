@@ -11,6 +11,7 @@ export function OctaveSelector({ octave, onChange }: Props) {
       <button onClick={() => onChange(octave - 1)}>-</button>
       <button onClick={() => onChange(octave + 1)}>+</button>
       <span className="label-display">&nbsp;</span>
+      <span className="label-display">&nbsp;</span>
     </div>
   );
 }
