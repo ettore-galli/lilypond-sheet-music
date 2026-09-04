@@ -7,7 +7,6 @@ import { loadState, saveState, type AppState } from "./applicationState";
 import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
-import { OctaveSelector } from "./components/OctaveSelector";
 import "./styles.css";
 import { SequencerNote } from "./base/typeDefinitions";
 
@@ -90,17 +89,16 @@ export default function App() {
       <Controls
         bpm={state.bpm}
         loop={state.loop}
+        octave={state.octave}
         onStart={start}
         onStop={stop}
         onReset={reset}
         onBpmChange={(d) => setState({ ...state, bpm: Math.max(40, Math.min(200, state.bpm + d)) })}
         onToggleLoop={() => setState({ ...state, loop: !state.loop })}
+        onOctaveChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
       />
 
-      <OctaveSelector
-        octave={state.octave}
-        onChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
-      />
+
 
       <Keyboard
         onNote={addNote}
