@@ -12,6 +12,8 @@ class Sequencer {
     sequenceIndex: number
     staccatoFactor: number
 
+    sequenceIndexChangeCallback: (index: number) => void
+
     constructor(
         timer: ITimer,
         audioEngine: IAudioEngine,
@@ -29,6 +31,10 @@ class Sequencer {
         this.playSequence = false;
         this.sequenceIndex = 0;
         this.staccatoFactor = 0.9;
+
+        this.sequenceIndexChangeCallback = ((_index: number) => { })
+        this.sequenceIndexChangeCallback(this.sequenceIndex);
+
     }
 
     getNoteDurationSeconds(): number {
@@ -70,6 +76,11 @@ class Sequencer {
         return this.sequenceIndex;
     }
 
+    set sequenceIndexChangeCallbackValue(cb: (index: number) => void) {
+        this.sequenceIndexChangeCallback = cb ?? ((_index: number) => { });
+        this.sequenceIndexChangeCallback(this.sequenceIndexValue);
+    }
+
     private set sequenceIndexValue(value: number) {
         this.sequenceIndex = value;
     }
@@ -77,8 +88,8 @@ class Sequencer {
     playNextNote(): void {
 
         if (this.playSequence && this.sequenceIndexValue >= this.sequence.length) {
+            this.sequenceIndexValue = 0;
             if (this.loop) {
-                this.sequenceIndexValue = 0;
             } else {
                 this.playSequence = false;
                 return;
@@ -87,12 +98,12 @@ class Sequencer {
 
         if (this.playSequence) {
             const note: AudioEngineNote = this.buildNote(
-                this.sequence[this.sequenceIndex], this.staccatoFactor * this.getNoteDurationSeconds()
+                this.sequence[this.sequenceIndexValue], this.staccatoFactor * this.getNoteDurationSeconds()
             )
-
+            this.sequenceIndexChangeCallback(this.sequenceIndexValue);
             this.audioEngine.playFreq(note);
 
-            this.sequenceIndex++;
+            this.sequenceIndexValue++;
 
             this.timer.setTimeout(
                 () => { this.playNextNote() },
@@ -114,6 +125,8 @@ class Sequencer {
 
     reset(): void {
         this.sequenceIndexValue = 0;
+        this.sequenceIndexChangeCallback(this.sequenceIndexValue);
+        this.playSequence = false;
     }
 
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {

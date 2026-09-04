@@ -20,16 +20,22 @@ function updateSequencer(seq: Sequencer, state: AppState) {
   }) : [];
 }
 
-
-function createSequencer(): Sequencer {
-  const audioEngine: AudioEngine = new AudioEngine();
-  const timer = new Timer();
-  return new Sequencer(timer, audioEngine);
-}
-
 export default function App() {
   const sequencerRef = useRef<Sequencer | null>(null);
   const [state, setState] = useState(loadState());
+  const [sequenceIndex, setSequenceIndex] = useState(0);
+
+  const sequenceIndexChangeCallback: (index: number) => void = (index: number) => {
+    setSequenceIndex(index);
+  }
+
+  const createSequencer: () => Sequencer = () => {
+    const audioEngine: AudioEngine = new AudioEngine();
+    const timer = new Timer();
+    const seq = new Sequencer(timer, audioEngine);
+    seq.sequenceIndexChangeCallbackValue = sequenceIndexChangeCallback
+    return seq;
+  }
 
   useEffect(() => {
     sequencerRef.current = createSequencer();
@@ -70,7 +76,7 @@ export default function App() {
     sequencerRef.current?.stop();
   }
   function reset() {
-    sequencerRef.current?.start();
+    sequencerRef.current?.reset();
   }
 
 
@@ -78,7 +84,7 @@ export default function App() {
     <div className="app">
       <SequenceGrid
         sequence={state.sequence}
-        currentIndex={sequencerRef.current?.sequenceIndex || 0}
+        currentIndex={sequenceIndex}
       />
 
       <Controls

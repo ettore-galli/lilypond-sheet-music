@@ -123,6 +123,7 @@ body {
 
 
 .clear-key {
+  width: 100%;
   height: 120px;
   background: #999;
   color: #000;
