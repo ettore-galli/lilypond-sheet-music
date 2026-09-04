@@ -95,15 +95,6 @@ button {
   color: inherit;
 }
 
-.octave-row button {
-  background-color: default;
-}
-
-.octave-display {
-  border-radius: 10px;
-  background-color: #999;
-}
-
 .keyboard {
   display: flex;
   gap: 2px;
