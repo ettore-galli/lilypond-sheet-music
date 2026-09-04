@@ -11,7 +11,7 @@ body {
   font-size: 1rem;
   font-weight: 800;
 
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 button {
@@ -52,37 +52,54 @@ button {
 .controls {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   gap: 10px;
 }
 
-.controls-section {
+.controls-row {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: stretch;
   gap: 10px;
 }
 
-.controls button {
+.controls-row>* {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   border-radius: 10px;
 }
 
-.bpm-display {
-  padding: 10px;
+.label-display {
+  background-color: inherit;
 }
 
-/* Ottava */
-.octave-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.value-display {
+  background-color: #999;
 }
+
+.loop-on {
+  background-color: yellow;
+}
+
+.loop-off {
+  background-color: default;
+}
+
+/* .bpm-display {
+  background-color: #999;
+} */
 
 .octave-row button {
-  padding: 10px 20px;
+  background-color: default;
 }
 
-.octave-display {}
+.octave-display {
+  border-radius: 10px;
+  background-color: #999;
+}
 
 /* Tastiera */
 .keyboard {

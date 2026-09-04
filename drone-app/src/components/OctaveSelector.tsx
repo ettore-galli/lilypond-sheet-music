@@ -5,10 +5,12 @@ interface Props {
 
 export function OctaveSelector({ octave, onChange }: Props) {
   return (
-    <div className="octave-row">
+    <div className="controls-row">
+      <span className="label-display">8va</span>
+      <span className="value-display">{octave}</span>
       <button onClick={() => onChange(octave - 1)}>-</button>
-      <span className="octave-display">Ottava {octave}</span>
       <button onClick={() => onChange(octave + 1)}>+</button>
+      <span className="label-display">&nbsp;</span>
     </div>
   );
 }
