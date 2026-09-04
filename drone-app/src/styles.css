@@ -19,7 +19,7 @@ body {
 
 .cell {
   border: 2px solid #444;
-  padding: 10px;
+  padding: 1px;
   text-align: center;
   font-size: 1.4rem;
   min-height: 40px;

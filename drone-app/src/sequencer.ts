@@ -66,12 +66,19 @@ class Sequencer {
         this.sequence.push(note);
     }
 
+    get sequenceIndexValue(): number {
+        return this.sequenceIndex;
+    }
+
+    private set sequenceIndexValue(value: number) {
+        this.sequenceIndex = value;
+    }
 
     playNextNote(): void {
 
-        if (this.playSequence && this.sequenceIndex >= this.sequence.length) {
+        if (this.playSequence && this.sequenceIndexValue >= this.sequence.length) {
             if (this.loop) {
-                this.sequenceIndex = 0;
+                this.sequenceIndexValue = 0;
             } else {
                 this.playSequence = false;
                 return;
@@ -96,7 +103,7 @@ class Sequencer {
     }
 
     start(): void {
-        this.sequenceIndex = 0;
+        this.sequenceIndexValue = 0;
         this.playSequence = true;
         this.playNextNote()
     }
@@ -106,7 +113,7 @@ class Sequencer {
     }
 
     reset(): void {
-        this.sequenceIndex = 0;
+        this.sequenceIndexValue = 0;
     }
 
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {

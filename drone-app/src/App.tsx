@@ -76,7 +76,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <SequenceGrid sequence={state.sequence} currentIndex={sequencerRef.current?.sequenceIndex || 0} />
+      <SequenceGrid
+        sequence={state.sequence}
+        currentIndex={sequencerRef.current?.sequenceIndex || 0}
+      />
 
       <Controls
         bpm={state.bpm}
@@ -100,4 +103,4 @@ export default function App() {
     </div>
   );
 }
- 
+
