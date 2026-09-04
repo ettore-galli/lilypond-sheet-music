@@ -1,4 +1,5 @@
 import type { AppSequencerNote } from "../applicationState";
+import type { JSX } from "react";
 
 interface Props {
   sequence: AppSequencerNote[];
@@ -6,11 +7,22 @@ interface Props {
 }
 
 export function SequenceGrid({ sequence, currentIndex }: Props) {
-  const getSequenceDisplayValue: (note: AppSequencerNote | undefined) => string = (note) => {
+  const getSequenceDisplayValue: (note: AppSequencerNote | undefined) => (string | number)[] = (note) => {
     if (note !== undefined) {
-      return `${note.noteName}${String(note.octave)}`;
+      return [note.noteName, note.octave];
     }
-    return "";
+    return [];
+  }
+  const renderSequenceDisplayValue: ((note: AppSequencerNote | undefined) => JSX.Element) = (note: AppSequencerNote | undefined) => {
+    if (note !== undefined) {
+      return (
+        <>
+          <span>{note.noteName}</span><span className="subscript">{note.octave}</span>
+        </>
+      );
+
+    }
+    return <></>;
   }
 
   return (
@@ -24,7 +36,8 @@ export function SequenceGrid({ sequence, currentIndex }: Props) {
             (sequence[i] ? " filled" : "")
           }
         >
-          {getSequenceDisplayValue(sequence[i])}
+          {renderSequenceDisplayValue(sequence[i])}
+
         </div>
       ))}
     </div>

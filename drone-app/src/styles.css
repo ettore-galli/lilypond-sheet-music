@@ -35,10 +35,18 @@ button {
 
 .cell {
   border: 2px solid #444;
-  padding: 10px;
   border-radius: 10px;
-  text-align: center;
   min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.subscript {
+  font-size: 0.7em;
+  line-height: 1;
+  transform: translateY(4px);  
 }
 
 .cell.filled {

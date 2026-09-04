@@ -25,7 +25,7 @@ export function Controls({
     <div className="controls">
 
       <div className="controls-row">
-        
+
         {/*  */}
         <button className="double-width" onClick={onStart}>START</button>
         <button className="double-width" onClick={onStop}>STOP</button>
