@@ -12,7 +12,7 @@ class Sequencer {
     sequenceIndex: number
     staccatoFactor: number
 
-    sequenceIndexChangeCallback: (index: number) => void
+    sequenceIndexChangeCallback: (index: number | null) => void
 
     constructor(
         timer: ITimer,
@@ -32,8 +32,8 @@ class Sequencer {
         this.sequenceIndex = 0;
         this.staccatoFactor = 0.9;
 
-        this.sequenceIndexChangeCallback = ((_index: number) => { })
-        this.sequenceIndexChangeCallback(this.sequenceIndex);
+        this.sequenceIndexChangeCallback = ((_index: number | null) => { })
+        this.sequenceIndexChangeCallback(null);
 
     }
 
@@ -76,8 +76,8 @@ class Sequencer {
         return this.sequenceIndex;
     }
 
-    set sequenceIndexChangeCallbackValue(cb: (index: number) => void) {
-        this.sequenceIndexChangeCallback = cb ?? ((_index: number) => { });
+    set sequenceIndexChangeCallbackValue(cb: (index: number | null) => void) {
+        this.sequenceIndexChangeCallback = cb ?? ((_index: number | null) => { });
         this.sequenceIndexChangeCallback(this.sequenceIndexValue);
     }
 
@@ -121,11 +121,12 @@ class Sequencer {
 
     stop(): void {
         this.playSequence = false;
+        this.sequenceIndexChangeCallback(null);
     }
 
     reset(): void {
         this.sequenceIndexValue = 0;
-        this.sequenceIndexChangeCallback(this.sequenceIndexValue);
+        this.sequenceIndexChangeCallback(null);
         this.playSequence = false;
     }
 

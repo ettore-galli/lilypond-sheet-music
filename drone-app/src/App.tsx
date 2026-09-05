@@ -22,10 +22,10 @@ function updateSequencer(seq: Sequencer, state: AppState) {
 export default function App() {
   const sequencerRef = useRef<Sequencer | null>(null);
   const [state, setState] = useState(loadState());
-  const [sequenceIndex, setSequenceIndex] = useState(0);
+  const [sequenceIndexForDisplay, setSequenceIndexForDisplay] = useState<number | null>(null);
 
-  const sequenceIndexChangeCallback: (index: number) => void = (index: number) => {
-    setSequenceIndex(index);
+  const sequenceIndexChangeCallback: (index: number | null) => void = (index: number | null) => {
+    setSequenceIndexForDisplay(index);
   }
 
   const createSequencer: () => Sequencer = () => {
@@ -83,7 +83,7 @@ export default function App() {
     <div className="app">
       <SequenceGrid
         sequence={state.sequence}
-        currentIndex={sequenceIndex}
+        currentIndex={sequenceIndexForDisplay}
       />
 
       <Controls

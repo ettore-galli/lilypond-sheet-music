@@ -26,7 +26,7 @@ export function SequenceGrid({ sequence, currentIndex }: Props) {
           key={i}
           className={
             "cell " +
-            (i === currentIndex ? "active" : "") +
+            ((currentIndex !== null && i === currentIndex) ? "active" : "") +
             (sequence[i] ? " filled" : "")
           }
         >
