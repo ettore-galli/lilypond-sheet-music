@@ -13,6 +13,9 @@ export class AudioEngine implements IAudioEngine {
   }
 
   playFreq(note: AudioEngineNote) {
+    this.osc = this.ctx.createOscillator();
+    this.gain = this.ctx.createGain();
+
     this.osc.type = "triangle";
     this.osc.frequency.value = note.freq;
 
