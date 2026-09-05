@@ -67,6 +67,7 @@ export class AudioEngineNote {
 
 export interface IAudioEngine {
     playFreq(note: AudioEngineNote): void;
+    stop(): void;
 }
 
 export type NotePlayer = (note: AudioEngineNote) => void;

@@ -121,6 +121,7 @@ class Sequencer {
 
     stop(): void {
         this.playSequence = false;
+        this.audioEngine.stop();
         this.sequenceIndexChangeCallback(null);
     }
 
