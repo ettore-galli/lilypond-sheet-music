@@ -18,23 +18,25 @@ button {
   font-size: inherit;
   font-weight: inherit;
   text-transform: inherit;
+  /* background-color: inherit;
+  border: inherit; */
 }
 
 .mid-big-font {
   font-size: 1.2em;
-  line-height: auto;
+  line-height: unset;
 }
 
 .big-font {
-  font-size: 2em;
-  line-height: auto;
+  font-size: 1.5em;
+  line-height:unset;
 }
 
 .app {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px;
+  gap: 2%;
+  padding: 2%;
 }
 
 .grid {
@@ -106,7 +108,7 @@ button {
 }
 
 .value-display {
-  background-color: #999;
+  background-color: inherit;
 }
 
 .loop-on {
@@ -123,7 +125,7 @@ button {
   min-width: 0;
   max-width: 100%;
   display: flex;
-  gap: 2px;
+  gap: 0.5%;
   position: relative;
 }
 
