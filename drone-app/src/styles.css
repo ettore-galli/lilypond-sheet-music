@@ -20,6 +20,11 @@ button {
   text-transform: inherit;
 }
 
+.big-font {
+  font-size: 2em;
+  line-height: 0;
+}
+
 .app {
   display: flex;
   flex-direction: column;

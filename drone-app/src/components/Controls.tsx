@@ -9,6 +9,8 @@ interface Props {
   onToggleLoop: () => void;
   onOctaveChange: (oct: number) => void;
 }
+const MINUS_SIGN_SYMBOL = "\u2212";
+const PLUS_SIGN_SYMBOL = "\u002B";
 
 export function Controls({
   bpm,
@@ -34,8 +36,8 @@ export function Controls({
         {/*  */}
         <span className="label-display">BPM</span>
         <span className="value-display">{bpm}</span>
-        <button onClick={() => onBpmChange(-5)}>−</button>
-        <button onClick={() => onBpmChange(+5)}>+</button>
+        <button className="big-font" onClick={() => onBpmChange(-5)}>{MINUS_SIGN_SYMBOL}</button>
+        <button className="big-font" onClick={() => onBpmChange(+5)}>{PLUS_SIGN_SYMBOL}</button>
         <span className="label-display">Loop</span>
         <button className={loop ? "loop-on" : "loop-off"} onClick={onToggleLoop}>
           {loop ? "ON" : "OFF"}
@@ -44,8 +46,8 @@ export function Controls({
         {/*  */}
         <span className="label-display">8va</span>
         <span className="value-display">{octave}</span>
-        <button onClick={() => onOctaveChange(octave - 1)}>-</button>
-        <button onClick={() => onOctaveChange(octave + 1)}>+</button>
+        <button className="big-font" onClick={() => onOctaveChange(octave - 1)}>{MINUS_SIGN_SYMBOL}</button>
+        <button className="big-font" onClick={() => onOctaveChange(octave + 1)}>{PLUS_SIGN_SYMBOL}</button>
         <span className="label-display">&nbsp;</span>
         <span className="label-display">&nbsp;</span>
 
