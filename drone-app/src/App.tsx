@@ -62,11 +62,9 @@ export default function App() {
   }
 
   function clearSequence() {
-    if (state.sequence.length < 16) {
       setState({
         ...state, sequence: []
       });
-    }
   }
   function start() {
     sequencerRef.current?.start();
