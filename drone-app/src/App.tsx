@@ -21,7 +21,7 @@ function updateSequencer(seq: Sequencer, state: AppState) {
 
 export default function App() {
   const sequencerRef = useRef<Sequencer | null>(null);
-  const [state, setState] = useState(loadState());
+  const [state, setState] = useState<AppState>(loadState());
   const [sequencerOperationState, setSequencerOperationState] = useState<SequencerOperationState>(SequencerOperationState.empty())
 
   const sequencerOperationStateChangeCallback: (state: SequencerOperationState) => void = (state: SequencerOperationState) => {
