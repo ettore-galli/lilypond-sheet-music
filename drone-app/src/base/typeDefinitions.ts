@@ -71,3 +71,40 @@ export interface IAudioEngine {
 }
 
 export type NotePlayer = (note: AudioEngineNote) => void;
+
+
+export class SequencerOperationState {
+    readonly bpm: number
+    readonly loop: boolean
+    readonly sequence: SequencerNote[]
+    readonly playSequence: boolean
+    readonly sequenceIndex: number
+    readonly staccatoFactor: number
+
+    constructor(
+        bpm: number,
+        loop: boolean,
+        sequence: SequencerNote[],
+        playSequence: boolean,
+        sequenceIndex: number,
+        staccatoFactor: number
+    ) {
+        this.bpm = bpm;
+        this.loop = loop;
+        this.sequence = sequence;
+        this.playSequence = playSequence;
+        this.sequenceIndex = sequenceIndex;
+        this.staccatoFactor = staccatoFactor;
+    }
+
+    static empty(): SequencerOperationState {
+        return new SequencerOperationState(
+            120,          
+            false,        
+            [],           
+            false,        
+            0,            
+            0.9           
+        );
+    }
+}

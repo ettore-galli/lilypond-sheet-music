@@ -8,7 +8,7 @@ import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
 import "./styles.css";
-import { SequencerNote } from "./base/typeDefinitions";
+import { SequencerNote, SequencerOperationState } from "./base/typeDefinitions";
 
 
 function updateSequencer(seq: Sequencer, state: AppState) {
@@ -22,17 +22,17 @@ function updateSequencer(seq: Sequencer, state: AppState) {
 export default function App() {
   const sequencerRef = useRef<Sequencer | null>(null);
   const [state, setState] = useState(loadState());
-  const [sequenceIndexForDisplay, setSequenceIndexForDisplay] = useState<number | null>(null);
+  const [sequencerOperationState, setSequencerOperationState] = useState<SequencerOperationState>(SequencerOperationState.empty())
 
-  const sequenceIndexChangeCallback: (index: number | null) => void = (index: number | null) => {
-    setSequenceIndexForDisplay(index);
+  const sequencerOperationStateChangeCallback: (state: SequencerOperationState) => void = (state: SequencerOperationState) => {
+    setSequencerOperationState(state);
   }
 
   const createSequencer: () => Sequencer = () => {
     const audioEngine: AudioEngine = new AudioEngine();
     const timer = new Timer();
     const seq = new Sequencer(timer, audioEngine);
-    seq.sequenceIndexChangeCallbackValue = sequenceIndexChangeCallback
+    seq.sequencerOperationStateChangeCallbackValue = sequencerOperationStateChangeCallback;
     return seq;
   }
 
@@ -66,17 +66,21 @@ export default function App() {
       ...state, sequence: []
     });
   }
+
   function deleteLastSequenceElement() {
     setState({
       ...state, sequence: state.sequence.slice(0, -1)
     });
   }
+
   function start() {
     sequencerRef.current?.start();
   }
+
   function stop() {
     sequencerRef.current?.stop();
   }
+
   function reset() {
     sequencerRef.current?.reset();
   }
@@ -86,8 +90,11 @@ export default function App() {
     <div className="app">
       <SequenceGrid
         sequence={state.sequence}
-        currentIndex={sequenceIndexForDisplay}
+        currentIndex={sequencerOperationState.sequenceIndex}
+        isPlaying={sequencerOperationState.playSequence}
       />
+
+      {sequencerRef.current?.playSequenceValue ? <div>PLAY</div> : <div>pause</div>}
 
       <Controls
         bpm={state.bpm}
@@ -100,8 +107,6 @@ export default function App() {
         onToggleLoop={() => setState({ ...state, loop: !state.loop })}
         onOctaveChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
       />
-
-
 
       <Keyboard
         onNote={addNote}

@@ -4,9 +4,10 @@ import type { JSX } from "react";
 interface Props {
   sequence: AppSequencerNote[];
   currentIndex: number | null;
+  isPlaying: boolean;
 }
 
-export function SequenceGrid({ sequence, currentIndex }: Props) {
+export function SequenceGrid({ sequence, currentIndex, isPlaying }: Props) {
 
   const renderSequenceDisplayValue: ((note: AppSequencerNote | undefined) => JSX.Element) = (note: AppSequencerNote | undefined) => {
     if (note !== undefined) {
@@ -26,7 +27,7 @@ export function SequenceGrid({ sequence, currentIndex }: Props) {
           key={i}
           className={
             "cell " +
-            ((currentIndex !== null && i === currentIndex) ? "active" : "") +
+            ((currentIndex !== null && isPlaying && i === currentIndex) ? "active" : "") +
             (sequence[i] ? " filled" : "")
           }
         >

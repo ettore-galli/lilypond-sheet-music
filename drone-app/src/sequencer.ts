@@ -1,4 +1,4 @@
-import { type IAudioEngine, SequencerNote, type ITimer } from "./base/typeDefinitions";
+import { type IAudioEngine, SequencerNote, type ITimer, SequencerOperationState } from "./base/typeDefinitions";
 import { AudioEngineNote, noteIntervalsMap } from "./base/typeDefinitions";
 
 class Sequencer {
@@ -12,7 +12,7 @@ class Sequencer {
     sequenceIndex: number
     staccatoFactor: number
 
-    sequenceIndexChangeCallback: (index: number | null) => void
+    sequencerOperationStateChangeCallback: (index: SequencerOperationState) => void
 
     constructor(
         timer: ITimer,
@@ -32,9 +32,21 @@ class Sequencer {
         this.sequenceIndex = 0;
         this.staccatoFactor = 0.9;
 
-        this.sequenceIndexChangeCallback = ((_index: number | null) => { })
-        this.sequenceIndexChangeCallback(null);
+        this.sequencerOperationStateChangeCallback = ((_state: SequencerOperationState) => { })
 
+    }
+
+    notifyCurrentState(): void {
+        this.sequencerOperationStateChangeCallback(
+            new SequencerOperationState(
+                this.bpm,
+                this.loop,
+                this.sequence,
+                this.playSequence,
+                this.sequenceIndex,
+                this.staccatoFactor
+            )
+        )
     }
 
     getNoteDurationSeconds(): number {
@@ -44,12 +56,22 @@ class Sequencer {
         return 1000 * this.getNoteDurationSeconds();
     }
 
+    get playSequenceValue(): boolean {
+        return this.playSequence;
+    }
+
+    set playSequenceValue(value: boolean) {
+        this.playSequence = value;
+        this.notifyCurrentState();
+    }
+
     get bpmValue(): number {
         return this.bpm;
     }
 
     set bpmValue(value: number) {
         this.bpm = value;
+        this.notifyCurrentState();
     }
 
     get loopValue(): boolean {
@@ -58,6 +80,7 @@ class Sequencer {
 
     set loopValue(value: boolean) {
         this.loop = value;
+        this.notifyCurrentState();
     }
 
     get sequenceValue(): SequencerNote[] {
@@ -66,28 +89,30 @@ class Sequencer {
 
     set sequenceValue(value: SequencerNote[]) {
         this.sequence = value;
+        this.notifyCurrentState();
     }
 
     addNoteToSequence(note: SequencerNote) {
         this.sequence.push(note);
+        this.notifyCurrentState();
     }
 
     get sequenceIndexValue(): number {
         return this.sequenceIndex;
     }
 
-    set sequenceIndexChangeCallbackValue(cb: (index: number | null) => void) {
-        this.sequenceIndexChangeCallback = cb ?? ((_index: number | null) => { });
-        this.sequenceIndexChangeCallback(this.sequenceIndexValue);
+    set sequencerOperationStateChangeCallbackValue(cb: (state: SequencerOperationState) => void) {
+        this.sequencerOperationStateChangeCallback = cb ?? ((_state: SequencerOperationState) => { });
     }
 
     private set sequenceIndexValue(value: number) {
         this.sequenceIndex = value;
+        this.notifyCurrentState();
     }
 
-    playNextNote(): void {
-
-        if (this.playSequence && this.sequenceIndexValue >= this.sequence.length) {
+    setNextSequenceElement() {
+        this.sequenceIndexValue++;
+        if (this.playSequenceValue && this.sequenceIndexValue >= this.sequenceValue.length) {
             this.sequenceIndexValue = 0;
             if (this.loop) {
             } else {
@@ -95,20 +120,26 @@ class Sequencer {
                 return;
             }
         }
+    }
 
-        if (this.playSequence) {
+    playNextNote(): void {
+        if (this.playSequenceValue) {
+
             const note: AudioEngineNote = this.buildNote(
-                this.sequence[this.sequenceIndexValue], this.staccatoFactor * this.getNoteDurationSeconds()
-            )
-            this.sequenceIndexChangeCallback(this.sequenceIndexValue);
+                this.sequenceValue[this.sequenceIndexValue],
+                this.staccatoFactor * this.getNoteDurationSeconds()
+            );
+
             this.audioEngine.playFreq(note);
 
-            this.sequenceIndexValue++;
-
             this.timer.setTimeout(
-                () => { this.playNextNote() },
+                () => {
+                    this.setNextSequenceElement();
+                    this.playNextNote();
+                },
                 this.getNoteDurationMilliseconds()
             );
+            this.notifyCurrentState();
         }
 
     }
@@ -116,19 +147,20 @@ class Sequencer {
     start(): void {
         this.sequenceIndexValue = 0;
         this.playSequence = true;
+        this.notifyCurrentState();
         this.playNextNote()
     }
 
     stop(): void {
         this.playSequence = false;
         this.audioEngine.stop();
-        this.sequenceIndexChangeCallback(null);
+        this.notifyCurrentState();
     }
 
     reset(): void {
         this.sequenceIndexValue = 0;
-        this.sequenceIndexChangeCallback(null);
         this.playSequence = false;
+        this.notifyCurrentState();
     }
 
     buildNote(note: SequencerNote, duration: number, diapason: number = 440): AudioEngineNote {
