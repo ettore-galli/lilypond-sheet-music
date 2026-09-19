@@ -1,3 +1,5 @@
+import { joinClassNames } from "../base/utilities";
+
 interface Props {
   bpm: number;
   loop: boolean;
@@ -23,24 +25,28 @@ export function Controls({
   onToggleLoop,
   onOctaveChange
 }: Props) {
+
+  const loopButtonValue = (loop ? "ON" : "OFF");
+  const loopButtonClass = joinClassNames((loop ? "loop-on" : "loop-off"), "mid-big-font");
+
   return (
     <div className="controls">
 
       <div className="controls-row">
 
         {/*  */}
-        <button className="double-width big-font" onClick={onStart}>START</button>
-        <button className="double-width big-font" onClick={onStop}>STOP</button>
-        <button className="double-width big-font" onClick={onReset}>RESET</button>
+        <button className="double-width mid-big-font" onClick={onStart}>START</button>
+        <button className="double-width mid-big-font" onClick={onStop}>STOP</button>
+        <button className="double-width mid-big-font" onClick={onReset}>RESET</button>
 
         {/*  */}
-        <span className="label-display big-font">BPM</span>
+        <span className="label-display mid-big-font">BPM</span>
         <span className="value-display big-font">{bpm}</span>
         <button className="big-font" onClick={() => onBpmChange(-5)}>{MINUS_SIGN_SYMBOL}</button>
         <button className="big-font" onClick={() => onBpmChange(+5)}>{PLUS_SIGN_SYMBOL}</button>
-        <span className="label-display big-font">LOOP</span>
-        <button className={(loop ? "loop-on" : "loop-off") + " big-font"} onClick={onToggleLoop}>
-          {loop ? "ON" : "OFF"}
+        <span className="label-display mid-big-font">LOOP</span>
+        <button className={loopButtonClass} onClick={onToggleLoop}>
+          {loopButtonValue}
         </button>
 
         {/*  */}
