@@ -22,7 +22,7 @@ button {
 
 .big-font {
   font-size: 2em;
-  line-height: 0;
+  line-height: auto;
 }
 
 .app {
@@ -52,6 +52,11 @@ button {
   font-size: 0.6em;
   line-height: 1;
   transform: translateY(4px);
+}
+
+.superscript {
+  font-size: 0.6em;
+  transform: translateY(-0.4em);
 }
 
 .cell.filled {
@@ -105,7 +110,7 @@ button {
 
 .loop-off {
   background-color: default;
-  color: inherit;
+  color: #444;
 }
 
 .keyboard {

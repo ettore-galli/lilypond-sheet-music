@@ -101,7 +101,7 @@ export default function App() {
         onStart={start}
         onStop={stop}
         onReset={reset}
-        onBpmChange={(d) => setState({ ...state, bpm: Math.max(40, Math.min(200, state.bpm + d)) })}
+        onBpmChange={(d) => setState({ ...state, bpm: Math.max(10, Math.min(200, state.bpm + d)) })}
         onToggleLoop={() => setState({ ...state, loop: !state.loop })}
         onOctaveChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
       />
