@@ -10,6 +10,7 @@ import { Keyboard } from "./components/Keyboard";
 import "./styles.css";
 import { SequencerNote, SequencerOperationState } from "./base/typeDefinitions";
 
+const clickFeedback: (() => void) = () => { navigator.vibrate(30) };
 
 function updateSequencer(seq: Sequencer, state: AppState) {
   seq.bpmValue = state.bpm;
@@ -74,14 +75,17 @@ export default function App() {
   }
 
   function start() {
+    clickFeedback()
     sequencerRef.current?.start();
   }
 
   function stop() {
+    clickFeedback()
     sequencerRef.current?.stop();
   }
 
   function reset() {
+    clickFeedback()
     sequencerRef.current?.reset();
   }
 
