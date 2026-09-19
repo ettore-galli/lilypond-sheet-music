@@ -62,9 +62,14 @@ export default function App() {
   }
 
   function clearSequence() {
-      setState({
-        ...state, sequence: []
-      });
+    setState({
+      ...state, sequence: []
+    });
+  }
+  function deleteLastSequenceElement() {
+    setState({
+      ...state, sequence: state.sequence.slice(0, -1)
+    });
   }
   function start() {
     sequencerRef.current?.start();
@@ -101,6 +106,7 @@ export default function App() {
       <Keyboard
         onNote={addNote}
         onClear={clearSequence}
+        onDel={deleteLastSequenceElement}
       />
     </div>
   );

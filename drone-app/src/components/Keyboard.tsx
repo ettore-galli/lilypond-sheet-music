@@ -8,10 +8,10 @@ const FLATS = [noteNamesMap.DFlat, noteNamesMap.EFlat, noteNamesMap.NoKey, noteN
 interface Props {
   onNote: (note: string) => void;
   onClear: () => void;
-
+  onDel: () => void;
 }
 
-export function Keyboard({ onNote, onClear }: Props) {
+export function Keyboard({ onNote, onClear, onDel }: Props) {
 
   const buildWhiteKey: ((noteName: string) => JSX.Element) = (noteName: string) => {
     return <button
@@ -41,6 +41,15 @@ export function Keyboard({ onNote, onClear }: Props) {
     </button>
   }
 
+  const buildDelKey: (() => JSX.Element) = () => {
+    return <button
+      className="del-key"
+      onClick={() => onDel()}
+    >
+      <span className="del-label">DEL</span>
+    </button>
+  }
+
   return (
     <div className="keyboard">
 
@@ -57,10 +66,10 @@ export function Keyboard({ onNote, onClear }: Props) {
         </div>
       ))}
 
-      <div key={"CLEAR"} className="key-wrapper">
+      <div key={"SEQ-CONTROLS"} className="key-wrapper vertical-key-wrapper">
         {buildClearKey()}
+        {buildDelKey()}
       </div>
-
     </div>
   );
 }
