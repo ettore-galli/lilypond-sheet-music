@@ -139,6 +139,7 @@ class Sequencer {
                 },
                 this.getNoteDurationMilliseconds()
             );
+
             this.notifyCurrentState();
         }
 

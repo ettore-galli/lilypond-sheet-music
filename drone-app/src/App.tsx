@@ -94,8 +94,6 @@ export default function App() {
         isPlaying={sequencerOperationState.playSequence}
       />
 
-      {sequencerRef.current?.playSequenceValue ? <div>PLAY</div> : <div>pause</div>}
-
       <Controls
         bpm={state.bpm}
         loop={state.loop}
