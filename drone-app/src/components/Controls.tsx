@@ -28,7 +28,6 @@ export function Controls({
 
   const loopButtonValue = (loop ? "ON" : "OFF");
   const loopButtonClass = joinClassNames((loop ? "loop-on" : "loop-off"));
-  const loopLabelClass = joinClassNames("mid-big-font", "h-shrink", (loop ? "loop-on" : "loop-off"));
 
   return (
     <div className="controls">
