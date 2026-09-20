@@ -1,4 +1,4 @@
-import type { ITimer, TimerCallback } from "./base/typeDefinitions";
+import type { ITimer, TimerCallback } from "../base/typeDefinitions";
 
 
 class Timer implements ITimer {

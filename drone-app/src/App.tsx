@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { AudioEngine } from "./audioEngine";
-import { Timer } from "./timer";
+import { AudioEngine } from "./logic/audioEngine";
+import { Timer } from "./logic/timer";
 
-import { Sequencer } from "./sequencer";
+import { Sequencer } from "./logic/sequencer";
 import { loadState, saveState, type AppState } from "./applicationState";
 import { SequenceGrid } from "./components/SequenceGrid";
 import { Controls } from "./components/Controls";

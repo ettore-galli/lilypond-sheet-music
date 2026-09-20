@@ -1,4 +1,4 @@
-import type { AudioEngineNote, IAudioEngine } from "./base/typeDefinitions";
+import type { AudioEngineNote, IAudioEngine } from "../base/typeDefinitions";
 
 // audioEngine.ts
 export class AudioEngine implements IAudioEngine {

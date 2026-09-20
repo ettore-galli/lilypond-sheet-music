@@ -1,5 +1,5 @@
-import { type IAudioEngine, SequencerNote, type ITimer, SequencerOperationState } from "./base/typeDefinitions";
-import { AudioEngineNote, noteIntervalsMap } from "./base/typeDefinitions";
+import { type IAudioEngine, SequencerNote, type ITimer, SequencerOperationState } from "../base/typeDefinitions";
+import { AudioEngineNote, noteIntervalsMap } from "../base/typeDefinitions";
 
 class Sequencer {
     timer: ITimer
