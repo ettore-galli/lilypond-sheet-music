@@ -36,7 +36,8 @@ body {
   min-width: 0;
   max-width: 100%;
   display: flex;
-  gap: 0.5%;
+  flex-direction: row;
+  gap: 0;
   position: relative;
 }
 
@@ -134,8 +135,6 @@ button {
   background-color: default;
   color: #444;
 }
-
-
 
 .key-wrapper {
   width: 12.5%;
