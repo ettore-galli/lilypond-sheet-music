@@ -13,6 +13,39 @@ body {
 
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1%;
+}
+
+.sequence-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.keyboard {
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  gap: 0.5%;
+  position: relative;
+}
+
+.controls-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+}
+
 button {
   font-size: inherit;
   font-weight: inherit;
@@ -31,19 +64,6 @@ button {
 
 .h-shrink {
   transform: scaleX(0.8);
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  gap: 1%;
-  padding: 1%;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 1%;
 }
 
 .cell {
@@ -73,18 +93,6 @@ button {
 .cell.active {
   background: #0f0;
   color: #000;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 1%;
-}
-
-.controls-row {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: stretch;
 }
 
 .controls-row>* {
@@ -127,13 +135,7 @@ button {
   color: #444;
 }
 
-.keyboard {
-  min-width: 0;
-  max-width: 100%;
-  display: flex;
-  gap: 0.5%;
-  position: relative;
-}
+
 
 .key-wrapper {
   width: 12.5%;

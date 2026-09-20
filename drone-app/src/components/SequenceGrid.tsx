@@ -21,7 +21,7 @@ export function SequenceGrid({ sequence, currentIndex, isPlaying }: Props) {
   }
 
   return (
-    <div className="grid">
+    <div className="sequence-grid">
       {Array.from({ length: 16 }).map((_, i) => (
         <div
           key={i}
