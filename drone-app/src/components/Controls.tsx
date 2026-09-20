@@ -27,7 +27,8 @@ export function Controls({
 }: Props) {
 
   const loopButtonValue = (loop ? "ON" : "OFF");
-  const loopButtonClass = joinClassNames("mid-big-font", "h-shrink", (loop ? "loop-on" : "loop-off"));
+  const loopButtonClass = joinClassNames((loop ? "loop-on" : "loop-off"));
+  const loopLabelClass = joinClassNames("mid-big-font", "h-shrink", (loop ? "loop-on" : "loop-off"));
 
   return (
     <div className="controls">
@@ -61,8 +62,8 @@ export function Controls({
           <span className="mid-big-font h-shrink">LOOP</span>
         </span>
 
-        <button onClick={onToggleLoop}>
-          <span className={loopButtonClass}>{loopButtonValue}</span>
+        <button className={loopButtonClass} onClick={onToggleLoop}>
+          <span className="mid-big-font h-shrink">{loopButtonValue}</span>
         </button>
 
         {/*  */}
