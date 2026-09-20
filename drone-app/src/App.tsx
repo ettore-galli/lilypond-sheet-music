@@ -88,31 +88,33 @@ export default function App() {
   useWakeLock();
 
   return (
-    <div className="app">
-      <SequenceGrid
-        sequence={state.sequence}
-        currentIndex={sequencerOperationState.sequenceIndex}
-        isPlaying={sequencerOperationState.playSequence}
-      />
+    <main id="main-content">
+      <div className="app">
+        <SequenceGrid
+          sequence={state.sequence}
+          currentIndex={sequencerOperationState.sequenceIndex}
+          isPlaying={sequencerOperationState.playSequence}
+        />
 
-      <Controls
-        bpm={state.bpm}
-        loop={state.loop}
-        octave={state.octave}
-        onStart={start}
-        onStop={stop}
-        onReset={reset}
-        onBpmChange={(d) => setState({ ...state, bpm: Math.max(10, Math.min(200, state.bpm + d)) })}
-        onToggleLoop={() => setState({ ...state, loop: !state.loop })}
-        onOctaveChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
-      />
+        <Controls
+          bpm={state.bpm}
+          loop={state.loop}
+          octave={state.octave}
+          onStart={start}
+          onStop={stop}
+          onReset={reset}
+          onBpmChange={(d) => setState({ ...state, bpm: Math.max(10, Math.min(200, state.bpm + d)) })}
+          onToggleLoop={() => setState({ ...state, loop: !state.loop })}
+          onOctaveChange={(oct) => setState({ ...state, octave: Math.max(2, Math.min(6, oct)) })}
+        />
 
-      <Keyboard
-        onNote={addNote}
-        onClear={clearSequence}
-        onDel={deleteLastSequenceElement}
-      />
-    </div>
+        <Keyboard
+          onNote={addNote}
+          onClear={clearSequence}
+          onDel={deleteLastSequenceElement}
+        />
+      </div>
+    </main>
   );
 }
 
