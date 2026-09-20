@@ -13,7 +13,7 @@ export function SequenceGrid({ sequence, currentIndex, isPlaying }: Props) {
     if (note !== undefined) {
       return (
         <>
-          <span>{note.noteName}</span><span className="subscript">{note.octave}</span>
+          <span>{note.noteName}<span className="subscript">{note.octave}</span></span>
         </>
       );
     }

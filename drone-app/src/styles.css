@@ -21,21 +21,23 @@ button {
 
 .mid-big-font {
   font-size: 1.6em;
-  /* transform: scaleX(0.8); */
   line-height: unset;
 }
 
 .big-font {
   font-size: 2.0em;
-  /* transform: scaleX(0.8); */
-  line-height:unset;
+  line-height: unset;
+}
+
+.h-shrink {
+  transform: scaleX(0.8);
 }
 
 .app {
   display: flex;
   flex-direction: column;
   gap: 1%;
-  padding: 2%;
+  padding: 1%;
 }
 
 .grid {
@@ -56,13 +58,12 @@ button {
 
 .subscript {
   font-size: 0.6em;
-  line-height: 1;
-  transform: translateY(4px);
+  vertical-align: sub;
 }
 
 .superscript {
   font-size: 0.6em;
-  transform: translateY(-0.4em);
+  vertical-align: super;
 }
 
 .cell.filled {
@@ -100,10 +101,20 @@ button {
 
 .label-display {
   background-color: inherit;
+  border: 3px solid #444;
+  border-radius: 10px;
+}
+
+.placeholder-label-display {
+  background-color: inherit;
+  border: none;
+  border-radius: 10px;
 }
 
 .value-display {
   background-color: inherit;
+  border: 3px solid #444;
+  border-radius: 10px;
 }
 
 .loop-on {

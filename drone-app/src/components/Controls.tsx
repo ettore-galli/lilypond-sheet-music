@@ -27,7 +27,7 @@ export function Controls({
 }: Props) {
 
   const loopButtonValue = (loop ? "ON" : "OFF");
-  const loopButtonClass = joinClassNames((loop ? "loop-on" : "loop-off"), "mid-big-font");
+  const loopButtonClass = joinClassNames("mid-big-font", "h-shrink", (loop ? "loop-on" : "loop-off"));
 
   return (
     <div className="controls">
@@ -35,30 +35,50 @@ export function Controls({
       <div className="controls-row">
 
         {/*  */}
-        <button className="double-width mid-big-font" onClick={onStart}>START</button>
-        <button className="double-width mid-big-font" onClick={onStop}>STOP</button>
-        <button className="double-width mid-big-font" onClick={onReset}>RESET</button>
+        <button className="double-width mid-big-font" onClick={onStart}><span className="h-shrink">START</span></button>
+        <button className="double-width mid-big-font" onClick={onStop}><span className="h-shrink">STOP</span></button>
+        <button className="double-width mid-big-font" onClick={onReset}><span className="h-shrink">RESET</span></button>
 
         {/*  */}
-        <span className="label-display mid-big-font">BPM</span>
-        <button className="big-font" onClick={() => onBpmChange(-5)}>{MINUS_SIGN_SYMBOL}</button>
-        <span className="value-display big-font">{bpm}</span>
-        <button className="big-font" onClick={() => onBpmChange(+5)}>{PLUS_SIGN_SYMBOL}</button>
-        <span className="label-display mid-big-font">LOOP</span>
-        <button className={loopButtonClass} onClick={onToggleLoop}>
-          {loopButtonValue}
+
+        <span className="label-display">
+          <span className="mid-big-font h-shrink">BPM</span>
+        </span>
+
+        <button onClick={() => onBpmChange(-5)}>
+          <span className="big-font">{MINUS_SIGN_SYMBOL}</span>
+        </button>
+
+        <span className="value-display ">
+          <span className="mid-big-font ">{bpm}</span>
+        </span>
+
+        <button onClick={() => onBpmChange(+5)}>
+          <span className="big-font">{PLUS_SIGN_SYMBOL}</span>
+        </button>
+
+        <span className="label-display">
+          <span className="mid-big-font h-shrink">LOOP</span>
+        </span>
+
+        <button onClick={onToggleLoop}>
+          <span className={loopButtonClass}>{loopButtonValue}</span>
         </button>
 
         {/*  */}
-        <span className="label-display big-font">8<span className="label-display big-font superscript">va</span></span>
+
+        <span className="label-display">
+          <span className="big-font h-shrink">8<span className="superscript">va</span></span>
+
+        </span>
         <button className="big-font" onClick={() => onOctaveChange(octave - 1)}>{MINUS_SIGN_SYMBOL}</button>
         <span className="value-display big-font">{octave}</span>
         <button className="big-font" onClick={() => onOctaveChange(octave + 1)}>{PLUS_SIGN_SYMBOL}</button>
-        <span className="label-display">&nbsp;</span>
-        <span className="label-display">&nbsp;</span>
+        <span className="placeholder-label-display">&nbsp;</span>
+        <span className="placeholder-label-display">&nbsp;</span>
 
       </div>
 
-    </div>
+    </div >
   );
 }
