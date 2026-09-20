@@ -9,6 +9,7 @@ import { Controls } from "./components/Controls";
 import { Keyboard } from "./components/Keyboard";
 import "./styles.css";
 import { SequencerNote, SequencerOperationState } from "./base/typeDefinitions";
+import { useWakeLock } from "./logic/uiWaveLock";
 
 function updateSequencer(seq: Sequencer, state: AppState) {
   seq.bpmValue = state.bpm;
@@ -84,6 +85,7 @@ export default function App() {
     sequencerRef.current?.reset();
   }
 
+  useWakeLock();
 
   return (
     <div className="app">
