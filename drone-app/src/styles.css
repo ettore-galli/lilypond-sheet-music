@@ -16,7 +16,7 @@ body {
   gap: 10px;
   padding: 1%;
 }
-
+ 
 .sequence-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -39,6 +39,7 @@ body {
 .keyboard {
   min-width: 0;
   max-width: 100%;
+  height: 120px;
   display: flex;
   flex-direction: row;
   gap: 0;
@@ -141,6 +142,7 @@ button {
 
 .key-wrapper {
   width: 12.5%;
+  height: 100%;
   position: relative;
   display: flex;
 }
@@ -151,7 +153,7 @@ button {
 
 .white-key {
   width: 100%;
-  height: 120px;
+  height: 100%;
   background: var(--white-key-bg);
   color: var(--white-key-text-h);
   border: 2px solid var(--white-key-border);
@@ -170,7 +172,7 @@ button {
 
 .black-key {
   width: 80%;
-  height: 80px;
+  height: 60%;
   background: var(--black-key-bg);
   color: var(--black-key-text-h);
   border: 2px solid var(--black-key-border);
@@ -194,7 +196,7 @@ button {
 
 .clear-key {
   width: 100%;
-  height: 60px;
+  height: 50%;
   background: var(--seq-edit-key--bg);
   color: var(--seq-edit-key-text-h);
   border: 2px solid var(--seq-edit-key-border);
@@ -212,7 +214,7 @@ button {
 
 .del-key {
   width: 100%;
-  height: 60px;
+  height: 50%;
   background: var(--seq-edit-key-bg);
   color: var(--seq-edit-key-text-h);
   border: 2px solid var(--seq-edit-key-border);
