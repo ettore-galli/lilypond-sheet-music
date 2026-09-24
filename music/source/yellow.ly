@@ -12,7 +12,7 @@
 
 melody =   {
   \set Staff.instrumentName = "Vl."
-  \key c \major
+  \key b \major
   \time 4/4
 
   \set Score.barNumberVisibility = #all-bar-numbers-visible
@@ -24,13 +24,11 @@ melody =   {
     <<
     \new Voice = "melody" {
      \voiceOne
-      <c'-3 e'-1>1   |   <b-2 g'-3>1    |   <a-1 f'-2>1     |    <c'-3 e'-1>1    |
+      <b-3 dis'-1>1   |   <ais-2 fis'-3>1    |   <gis-1 e'-2>1     |    <b-3 dis'-1>1    |
     }
 
     \new Voice = "slashes" \with {
       \override NoteHead.style = #'slash
-      % \override Stem.transparent = ##t
-      % \override Beam.transparent = ##t
     } {
       \voiceTwo
       \stemUp e''8 [ e''8 e''8 ] e''8 [ e''8 e''8 ] e''8 [ e''8 ]
@@ -43,17 +41,20 @@ melody =   {
 
   \break
 
-
   \repeat volta 3 {
     \mark \markup {"Ritornello"}
     
-    f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
-    f'4~ f'8 g'4( a'8 ) d''8 [a'8]  | c''4~ c''8 a'8~ a'2 |
- 
+    e'4~-1 e'8 fis'4-2( gis'8-3 ) cis''8-1 [gis'8-3]  | 
+    dis''4~-1 dis''8-1 gis'8~-3 gis'2-3 |
+
+    e'4~-1 e'8 fis'4-2( gis'8-3 ) cis''8-1 [gis'8-3]  | 
+    dis''4~-1 dis''8-1 gis'8~-3 gis'2-3 |
   }
+
   \repeat volta 1 {
-    f'1 |
+    e'1-1 |
   }
+
   \break
 
 }

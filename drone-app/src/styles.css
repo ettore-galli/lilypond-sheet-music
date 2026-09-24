@@ -20,12 +20,19 @@ body {
 .sequence-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  gap: 1%;
+  gap: 10px;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.controls-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
   gap: 10px;
 }
 
@@ -36,12 +43,6 @@ body {
   flex-direction: row;
   gap: 0;
   position: relative;
-}
-
-.controls-row {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: stretch;
 }
 
 button {
