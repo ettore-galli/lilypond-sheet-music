@@ -31,15 +31,20 @@ export function Controls({
 
   return (
     <div className="controls">
+      
+      {/*  */}
 
       <div className="controls-row">
 
-        {/*  */}
         <button className="double-width mid-big-font" onClick={onStart}><span className="h-shrink">START</span></button>
         <button className="double-width mid-big-font" onClick={onStop}><span className="h-shrink">STOP</span></button>
         <button className="double-width mid-big-font" onClick={onReset}><span className="h-shrink">RESET</span></button>
+      
+      </div>
 
-        {/*  */}
+      {/*  */}
+
+      <div className="controls-row">
 
         <span className="label-display">
           <span className="mid-big-font h-shrink">BPM</span>
@@ -65,7 +70,11 @@ export function Controls({
           <span className="mid-big-font h-shrink">{loopButtonValue}</span>
         </button>
 
-        {/*  */}
+      </div>
+
+      {/*  */}
+
+      <div className="controls-row">
 
         <span className="label-display">
           <span className="big-font h-shrink">8<span className="superscript">va</span></span>
