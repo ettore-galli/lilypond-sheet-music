@@ -197,7 +197,7 @@ button {
 .clear-key {
   width: 100%;
   height: 50%;
-  background: var(--seq-edit-key--bg);
+  background: var(--seq-edit-key-bg);
   color: var(--seq-edit-key-text-h);
   border: 2px solid var(--seq-edit-key-border);
   position: relative;
