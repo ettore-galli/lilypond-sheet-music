@@ -24,7 +24,7 @@ melody =   {
     <<
     \new Voice = "melody" {
      \voiceOne
-      <b-3 dis'-1>1   |   <ais-2 fis'-3>1    |   <gis-1 e'-2>1     |    <b-3 dis'-1>1    |
+      <b-3 dis'?-1>1   |   <ais?-2 fis'?-2>1    |   <gis?-1 e'-2>1     |    <b-2 dis'?-1>1    |
     }
 
     \new Voice = "slashes" \with {
@@ -45,10 +45,10 @@ melody =   {
     \mark \markup {"Ritornello"}
     
     e'4~-1 e'8 fis'4-2( gis'8-3 ) cis''8-1 [gis'8-3]  | 
-    dis''4~-1 dis''8-1 gis'8~-3 gis'2-3 |
+    b'4~-1 b'8-1 gis'8~-3 gis'2-3 |
 
     e'4~-1 e'8 fis'4-2( gis'8-3 ) cis''8-1 [gis'8-3]  | 
-    dis''4~-1 dis''8-1 gis'8~-3 gis'2-3 |
+    b'4~-1 b'8-1 gis'8~-3 gis'2-3 |
   }
 
   \repeat volta 1 {
