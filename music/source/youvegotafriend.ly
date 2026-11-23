@@ -22,31 +22,31 @@ violin = {
   \break
 
   \repeat volta 2 {
-  c'1       |c'1          | f'2   ees'2 | c'1
-  des'1     |f'2   ees'2   
+  c'1        |c'1          | f'2   ees'?2 | c'1
+  des'?1     |f'2   ees'?2   
   }
   \alternative {
-    {|c'1           |c'1           }
-    {|bes1          |f'2   ees'2   }
+    {|c'1            |c'1           }
+    {|bes?1          |f'2   ees'?2   }
   }
     \bar "||"d'2        e'2
   
   \break
-    |c'1       |c'1          |f'1        |f'1                  
-    |ees'1     |ees'1        |bes1       |bes2      f'4  ees'4   
+    |c'1        |c'1           |f'1         |f'1                  
+    |ees'?1     |ees'?1        |bes?1       |bes?2      f'4  ees'?4   
 
   \break
-    |c'1       |c'1          |f'1        |f'2       ees'2                  
-    |des'2      c'2          |bes2        f'2    
-    |ees'1     |f'1          |ees'1      |d'2        e'2  
+    |c'1        |c'1          |f'1         |f'2       ees'?2                  
+    |des'?2      c'2          |bes?2        f'2    
+    |ees'?1     |f'1          |ees'?1      |d'2        e'2  
   
   \break
-    |ges'1     |f'1          |ees'1      |ees'1  
-    |f'1       |ges'1        |f'1        |f'1  
-    |ees'1     |ees'1  
+    |ges'?1     |f'1           |ees'?1      |ees'?1  
+    |f'1        |ges'?1        |f'1         |f'1  
+    |ees'?1     |ees'?1  
   
   \break
-    |ees'1     |f'1 
+    |ees'?1     |f'1 
 
   % c'1\fermata |
 }
