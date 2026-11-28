@@ -57,8 +57,8 @@ g'1           |  a'1            |
 
 \mark \markup {"Gtr.Solo"}
 {
-g'2    fis'2 |  e'2   d''2  |c''2   b'2   |  a'1         |
-g'2    fis'2 |  e'2   d''2  |c''2   b'2   |  a'1         |
+g'2    fis'2 |  e'2   <d'' \parenthesize d'>2  |c''2   b'2   |  a'1         |
+g'2    fis'2 |  e'2   <d'' \parenthesize d'>2  |c''2   b'2   |  a'1         |
 g'1                         |  fis'8 fis'8 fis'8 fis'8 fis'8 fis'8 fis'8 fis'8 |
 }
 
